@@ -154,8 +154,8 @@ a:after {
 }
 
 .btnUploadCar {
-  background-color: #0056b3;
-  border: 1px solid #0056b3;
+  background-color: #fe7768;
+  border: 1px solid #fe7768;
   border-radius: 5px;
   font-size: medium;
   width: 8em;
@@ -175,7 +175,8 @@ a:after {
 }
 
 .btnUploadCar:hover {
-  background-color: #063c75;
+  background-color: #dd5748;
+  border: 1px solid #dd5748;
 }
 
 .btnBookHome {
@@ -248,14 +249,21 @@ hr {
 
 .imgAbout {
   float: right;
-  width: 40rem;
+  width: 50em;
   margin-top: -35rem;
+  margin-bottom: 15rem;
 }
 
 .imgBooking {
   float: right;
   width: 30rem;
   margin-top: -18rem;
+}
+
+.imgUpload {
+  float: right;
+  width: 40rem;
+  margin-top: -1rem;
 }
 
 .imgContact {
@@ -388,7 +396,7 @@ h4 {
   letter-spacing: 0.5;
   line-height: 1.5;
   text-align: left;
-  inline-size: 40em;
+  inline-size: 30em;
   font-size: medium;
   padding-top: 1rem;
 }
@@ -1172,4 +1180,57 @@ label.formContact-label {
   display: flex;
   margin-top: -17rem;
   margin-right: -3rem;
+}
+
+.formUpload {
+  /* width: 100%; */
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  margin-bottom: 10rem;
+  float: left;
+}
+
+.formUpload label {
+  margin-left: 5px;
+  color: #0056b3;
+  font-family: "text", sans-serif;
+  font-size: 15px;
+}
+
+.formUploadGroup {
+  width: 30em;
+  margin-top: 20px;
+}
+
+.formUploadGroup-date {
+  width: 30em;
+  margin: 20px 20px 0 0;
+}
+
+.formUploadDate {
+  width: 30em;
+  display: flex;
+}
+
+.btnUpload {
+  margin-top: 20px;
+  background: #0056b3;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #0056b3;
+  border-color: #0056b3;
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  font-size: medium;
+}
+
+.btnUpload:hover {
+  background: #063c75;
+}
+
+.fileImage {
+  height: 42px;
 }
