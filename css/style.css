@@ -153,6 +153,31 @@ a:after {
   /* color: #0056b3; */
 }
 
+.btnUploadCar {
+  background-color: #0056b3;
+  border: 1px solid #0056b3;
+  border-radius: 5px;
+  font-size: medium;
+  width: 8em;
+  height: 35px;
+  margin-top: 2rem;
+  float: left;
+  /* margin: 5rem 0; */
+}
+
+.btnUploadCar a {
+  color: #fff;
+  padding: 15px;
+}
+
+.btnUploadCar a:hover {
+  color: #ffffff;
+}
+
+.btnUploadCar:hover {
+  background-color: #063c75;
+}
+
 .btnBookHome {
   color: #fff;
   background-color: #0056b3;
@@ -187,8 +212,8 @@ a:after {
 }
 
 .btnBookHome:hover {
-  background-color: #fe7768;
-  border: 1px solid #fe7768;
+  background-color: #063c75;
+  border: 1px solid #063c75;
 }
 
 .btnBookHome a:hover {
@@ -366,6 +391,20 @@ h4 {
   inline-size: 40em;
   font-size: medium;
   padding-top: 1rem;
+}
+
+.bannerNoteCar {
+  /* padding-top: 1rem; */
+  color: #5e5e5e;
+  font-family: "button", sans-serif;
+  letter-spacing: 0.5;
+  line-height: 1.5;
+  text-align: left;
+  inline-size: 40em;
+  font-size: medium;
+  padding-top: 1rem;
+  margin-top: 7rem;
+  z-index: 10;
 }
 
 .bannerNoteReset {
@@ -596,7 +635,7 @@ h4 {
   border: 1px solid #0056b3;
   border-color: #0056b3;
   width: 95.5%;
-  height: 32px;
+  height: 35px;
   text-align: center;
   font-size: medium;
 }
@@ -609,7 +648,8 @@ h4 {
   border: 1px solid #0056b3;
   border-color: #0056b3;
   width: 96.3%;
-  height: 32px;
+  height: 35px;
+
   /* float: right; */
   font-size: medium;
 }
@@ -643,8 +683,8 @@ h4 {
 }
 
 .btnSearchCar:hover {
-  background-color: #fe7768;
-  border: 2px solid #fe7768;
+  background-color: #063c75;
+  border: 2px solid #063c75;
   color: #fff;
 }
 
@@ -838,6 +878,7 @@ main {
 .formContact-h3 {
   font-family: "text";
   letter-spacing: 1;
+  margin-top: 0;
 }
 
 textarea.formContact-form-control {
@@ -892,8 +933,8 @@ label.formContact-label {
 
 .formContact-btn-primary:hover {
   color: #fff;
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #063c75;
+  border-color: #063c75;
 }
 
 .formContact-btn-lg,
