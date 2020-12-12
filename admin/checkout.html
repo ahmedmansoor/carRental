@@ -3,6 +3,10 @@
     <title>Car Rental Maldives</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
   </head>
 
   <body>
@@ -16,13 +20,13 @@
             <li class="home">
               <a href="home.html">Home</a>
             </li>
-            <li class="home"><a href="cars.html" class="active">Cars</a></li>
+            <li class="home"><a href="cars.html">Cars</a></li>
             <li class="about"><a href="about.html">About</a></li>
             <li class="contact">
               <a href="contact.html">Contact</a>
             </li>
             <button type="button" class="btnSignIn1">
-              <a href="../index.html">Sign In</a>
+              <a href="./profile.html">Profile</a>
             </button>
           </ul>
         </div>
@@ -30,25 +34,17 @@
     </header>
 
     <main>
-      <div class="banner">
-        <h2>
-          Complete your travel plans by <br />
-          booking your car rental.
-        </h2>
+      <div class="bannerCheckout">
+        <h2>Checkout</h2>
       </div>
 
-      <div class="bannerNote">
-        <p>
-          Browse all our cars online, and once you have narrowed down your
-          search and would like to book a car, simply click the 'Book now'
-          button and complete the payment for booking confirmation.
-        </p>
+      <div class="bannerNoteCheckout">
+        <i class="material-icons">reply</i>
+        <a href="./cars.html">Go back (Cars)</a>
       </div>
-
-      <img class="imgBooking" src="../img/booking.svg" />
 
       <!-- Search -->
-      <div class="searchBoxCar">
+      <!-- <div class="searchBoxCar">
         <div class="formSearchCar">
           <form action="backend/auth.php" method="POST">
             <div class="rowDetails">
@@ -108,66 +104,58 @@
             <button type="submit" class="btnSearchCar">Search</button>
           </form>
         </div>
+      </div> -->
+
+      <div class="rowCheckout">
+        <!-- card1 -->
+        <div class="cardCoverCheckout">
+          <div class="cardCheckout-car">
+            <div class="imgContainerCheckout">
+              <img
+                class="imgCar"
+                src="../img/cars/Aston Martin DBS Superleggera.jpg"
+              />
+            </div>
+            <div class="cardTextCoverCheckout">
+              <div class="carName">Audi RS6 Avant/RS7</div>
+              <h2 class="carPrice">MVR 1000</h2>
+              <p class="perday">per day</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardCoverCheckout">
+          <div class="cardCheckout-text">
+            <div class="cardTextCoverCheckout">
+              <div class="carPrice">Pickup</div>
+              <p>Male' International Airport</p>
+              <p>16th October 2020</p>
+              <p>15:20</p>
+              <br />
+              <div class="carPrice">Return</div>
+              <p>Male' International Airport</p>
+              <p>12th October 2020</p>
+              <p>15:20</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="row">
-        <!-- card1 -->
-        <div class="cardCover">
-          <div class="card">
-            <div class="imgContainer">
-              <img
-                class="imgCar"
-                src="../img/cars/Aston Martin DBS Superleggera.jpg"
-              />
-            </div>
-            <div class="cardTextCover">
-              <p class="carName">Audi RS6 Avant/RS7</p>
-              <p class="carPrice">MVR 1000</p>
-              <p class="perday">per day</p>
-              <button type="button" class="btnBook">
-                <a href="../index.html">Book now</a>
-              </button>
-            </div>
-          </div>
-        </div>
-
+      <div class="paymentCover">
         <!-- card2 -->
-        <div class="cardCover">
-          <div class="card">
-            <div class="imgContainer">
-              <img
-                class="imgCar"
-                src="../img/cars/Aston Martin DBS Superleggera.jpg"
-              />
+        <div class="cardCoverCheckout">
+          <div class="cardCheckout-text">
+            <div class="cardTextCoverCheckout">
+              <div class="carPrice">Summary of charges</div>
+              <p>Perday: MVR 1000</p>
+              <p>No. of days: 4</p>
+              <br />
+              <div class="carPrice">Total</div>
+              <p>MVR 4000</p>
             </div>
-            <div class="cardTextCover">
-              <p class="carName">Audi RS6 Avant/RS7</p>
-              <p class="carPrice">MVR 1000</p>
-              <p class="perday">per day</p>
-              <button type="button" class="btnBook">
-                <a href="../index.html">Book now</a>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- card3 -->
-        <div class="cardCover">
-          <div class="card">
-            <div class="imgContainer">
-              <img
-                class="imgCar"
-                src="../img/cars/Aston Martin DBS Superleggera.jpg"
-              />
-            </div>
-            <div class="cardTextCover">
-              <p class="carName">Audi RS6 Avant/RS7</p>
-              <p class="carPrice">MVR 1000</p>
-              <p class="perday">per day</p>
-              <button type="button" class="btnBook">
-                <a href="../index.html">Book now</a>
-              </button>
-            </div>
+            <button type="button" class="btnPay">
+              <a href="/user/profile.html">Confirm Payment</a>
+            </button>
           </div>
         </div>
       </div>

@@ -227,6 +227,12 @@ hr {
   margin-top: -35rem;
 }
 
+.imgBooking {
+  float: right;
+  width: 30rem;
+  margin-top: -18rem;
+}
+
 .imgContact {
   float: left;
   width: 35rem;
@@ -596,31 +602,38 @@ h4 {
 }
 
 .btnSearchCar {
-  margin: 10px;
+  margin: 20px 10px 10px 10px;
   background: #0056b3;
   color: #fff;
   border-radius: 5px;
   border: 1px solid #0056b3;
   border-color: #0056b3;
+  width: 96.3%;
+  height: 32px;
+  /* float: right; */
+  font-size: medium;
+}
+
+/* buttonFloatRight
   width: 150px;
   height: 32px;
   text-align: center;
   justify-content: center;
   align-items: center;
-  float: right;
-  font-size: medium;
-}
+  float: right; */
 
 .formSearchCar {
   /* 100% or center */
+  margin-top: 2rem;
   display: flex;
   /* width: 100%; */
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   padding-top: 0.2rem;
   position: relative;
   font-size: medium;
   letter-spacing: 1.1;
+  /* float: left; */
 }
 
 .btnSearch:hover {
