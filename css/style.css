@@ -39,6 +39,7 @@ body {
 
 .logo {
   padding: 0 1rem 3.5px 7rem;
+  min-width: 290px;
 }
 
 .logo a {
@@ -57,13 +58,14 @@ body {
 .navBar {
   align-items: center;
   background: #fff;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   height: 4rem;
   overflow: hidden;
   position: fixed;
   width: 100%;
   z-index: 10;
+  min-width: 1395px;
 }
 
 li {
@@ -1188,7 +1190,7 @@ label.formContact-label {
   justify-content: center;
   justify-items: center;
   align-content: center;
-  margin-bottom: 10rem;
+  margin: 0 0 10rem 0;
   float: left;
 }
 
@@ -1233,4 +1235,18 @@ label.formContact-label {
 
 .fileImage {
   height: 42px;
+}
+
+option {
+  font-family: "text";
+  background-color: #fff;
+  font-size: small;
+}
+
+option:before {
+  padding-right: 10px;
+  padding-left: 5px;
+  color: #fff3f2;
+  border-radius: 5px;
+  border: solid 1px #0056b3;
 }
