@@ -46,7 +46,11 @@
       <img class="imgUpload" src="../img/upload.svg" />
 
       <div class="formUpload">
-        <form action="../backend/upload.php" method="POST">
+        <form
+          method="POST"
+          action="../backend/upload.php"
+          enctype="multipart/form-data"
+        >
           <div class="formUploadGroup">
             <label>Car Name</label>
             <input
@@ -92,12 +96,15 @@
 
           <!-- <div class="formUploadGroup">
             <label>Upload Image</label>
-            <input
-              class="fileImage"
-              type="file"
-              name="carimg"
-              required="required"
-            />
+            <input type="hidden" name="size" value="100000" />
+            <div>
+              <input
+                type="file"
+                class="fileImage"
+                name="image"
+                required="required"
+              />
+            </div>
           </div> -->
           <button name="btnUpload" class="btnUpload" type="submit">
             Submit
