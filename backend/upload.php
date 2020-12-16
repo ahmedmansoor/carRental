@@ -27,18 +27,18 @@ if (isset($_POST["btnUpload"])) {
 }
 
 // Check if file already exists
-if (file_exists($target_file)) {
-    echo "<pre> Sorry, file already exists.";
-    $uploadOk = 0;
-}
+// if (file_exists($target_file)) {
+//     echo "<pre> Sorry, file already exists.";
+//     $uploadOk = 0;
+// }
 
 // Check file size
-if ($_FILES["image"]["size"] > 500000) {
+if ($_FILES["image"]["size"] > 1000000) {
     echo "<pre> Sorry, your file is too large.";
     $uploadOk = 0;
 }
 
-// Allow certain file formats
+// only image files
 if (
     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 ) {
@@ -49,28 +49,32 @@ if (
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo " <pre> Your file was not uploaded.";
-    // if everything is ok, try to upload file
+    // try to upload file
 } else {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
-        echo ($target_file);
-
-
+        // echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
 
         $sql = "INSERT INTO cars (carname, price, image, fromdate, todate) 
-                VALUES(:carname,:price, $target_file, :fromdate, :todate)";
+                VALUES(:carname,:price, :target_file, :fromdate, :todate)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'carname' => $_POST['carname'],
             'price' => $_POST['price'],
-            // 'image' => $_POST['target_file'],
-            target_file => $target_file,
+            'target_file' => $target_file,
             'fromdate' => $_POST['fromdate'],
             'todate' => $_POST['todate'],
         ]);
+
+        echo "<script>
+            alert('Car added successfully.');
+            window.location.href='../admin/upload.html';
+            </script>";
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "<script>
+            alert('Sorry, there was an error uploading your file.');
+             window.location.href='../admin/upload.html';
+            </script>";
     }
 }
 
