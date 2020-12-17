@@ -94,14 +94,14 @@ include_once("../db/pdoconn.php");
         //     echo $row['todate'] . "<br />\n";
 
         ?>
-
-        <?php
-        $stmt = $pdo->query("SELECT * FROM cars");
-        while ($row = $stmt->fetch()) :
-
-        ?>
-
         <div class="row">
+
+            <?php
+            $stmt = $pdo->query("SELECT * FROM cars");
+            while ($row = $stmt->fetch()) :
+
+            ?>
+
             <div class="cardCover">
                 <div class="card">
                     <div class="imgContainer">
@@ -117,12 +117,12 @@ include_once("../db/pdoconn.php");
                     </div>
                 </div>
             </div>
+            <?php
+            endwhile;
+            ?>
         </div>
 
     </main>
-    <?php
-        endwhile;
-?>
 
 </body>
 

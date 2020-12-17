@@ -368,7 +368,7 @@ h4 {
 }
 
 .banner {
-  padding-top: 5rem;
+  padding-top: 8rem;
   margin: 0;
   /* margin-bottom: 10px; */
   width: 100%;
@@ -970,17 +970,17 @@ label.formContact-label {
   display: -ms-flexbox;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: 3rem;
-  margin-left: 3rem;
+  margin-top: 3rem;
+  /* margin-left: 3rem; */
   justify-content: center;
-  padding: 3rem;
   /* overflow-x: scroll; */
 }
 
 .cardCover {
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 /* .cPic {
@@ -1109,7 +1109,7 @@ label.formContact-label {
 }
 
 .imgCar {
-  background-color: #0056b3;
+  background-color: #fff;
   background-image: url("/images/blue-leaves.jpg");
   background-size: cover;
   max-width: 18rem;
