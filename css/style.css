@@ -262,10 +262,16 @@ hr {
   margin-top: -18rem;
 }
 
+.imgBookingAdmin {
+  float: right;
+  width: 30rem;
+  margin-top: -35rem;
+}
+
 .imgUpload {
   float: right;
   width: 40rem;
-  margin-top: -1rem;
+  margin-top: 3rem;
 }
 
 .imgContact {
@@ -375,6 +381,11 @@ h4 {
   font-family: "brand";
   font-size: 26px;
   letter-spacing: 1.5;
+}
+
+.bannerAdmin {
+  padding-top: 6rem;
+  margin-bottom: -1.5rem;
 }
 
 .bannerCheckout {
@@ -1190,7 +1201,7 @@ label.formContact-label {
   justify-content: center;
   justify-items: center;
   align-content: center;
-  margin: 0 0 10rem 0;
+  margin: 3rem 0 10rem -9rem;
   float: left;
 }
 
@@ -1237,16 +1248,58 @@ label.formContact-label {
   height: 42px;
 }
 
-option {
-  font-family: "text";
-  background-color: #fff;
-  font-size: small;
+/* Custom dropdown */
+.locationDropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-option:before {
-  padding-right: 10px;
-  padding-left: 5px;
-  color: #fff3f2;
+.locationDropdownAdmin {
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+  width: 100%;
+}
+
+.locationDropdownAdmin select {
+  width: 100%;
+}
+
+.locationDropdown select {
+  background-color: #f3f4f4;
+  color: #212529;
+  font-size: small;
+  padding: 0.5em;
+  border: 0;
+  margin-left: 10px;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: "";
+  height: 32px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  border: solid 1px #0056b3;
+  letter-spacing: 1.1px;
+}
+
+.locationDropdown::before,
+.locationDropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.locationDropdown select[disabled] {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.locationDropdown select[disabled]::after {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.locationDropdown::before {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.locationDropdown::after {
+  color: rgba(0, 0, 0, 0.4);
 }

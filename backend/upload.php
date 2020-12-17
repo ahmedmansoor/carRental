@@ -54,15 +54,15 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         // echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
 
-        $sql = "INSERT INTO cars (carname, price, image, location, fromdate, todate) 
-                VALUES(:carname,:price, :target_file, :location, :fromdate, :todate)";
+        $sql = "INSERT INTO cars (carname, price, image, fromdate, todate) 
+                VALUES(:carname,:price, :target_file, :fromdate, :todate)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'carname' => $_POST['carname'],
             'price' => $_POST['price'],
             'target_file' => $target_file,
-            'location' => $_POST['location'],
+            // 'location' => $_POST['location'],
             'fromdate' => $_POST['fromdate'],
             'todate' => $_POST['todate'],
         ]);

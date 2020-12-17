@@ -56,7 +56,7 @@ include_once("../db/pdoconn.php");
 
         <div class="searchBoxCar">
             <div class="formSearchCar">
-                <form action="cars.php" method="POST">
+                <form action="backend/auth.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails3">Pick-up details</p>
                     </div>
@@ -77,10 +77,7 @@ include_once("../db/pdoconn.php");
                                 <option>Jetty Number 6 (Malé)</option>
                             </select>
                         </span>
-                        <input class="inputSearch" type="date" name="fromdate" placeholder="date" required />
-                        <?php
-                        $fromdate = "todate";
-                        ?>
+                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
                     </div>
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails4">Drop off details</p>
@@ -103,13 +100,10 @@ include_once("../db/pdoconn.php");
                             </select>
                         </span>
 
-                        <input class="inputSearch" type="date" name="todate" placeholder="date" required />
-                        <?php
-                        $todate = "todate";
-                        ?>
+                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
 
                     </div>
-                    <button type="submit" name="btnSearch" class="btnSearchCar">Search</button>
+                    <button type="submit" class="btnSearchCar">Search</button>
                 </form>
             </div>
         </div>
@@ -119,27 +113,10 @@ include_once("../db/pdoconn.php");
 
         <div class="row">
             <?php
-
-
-
-            // if (isset($_POST["btnSearch"])) {
-
-            $stmt = $pdo->query('SELECT *
-                FROM cars WHERE fromdate 
-                BETWEEN fromdate 
-                AND todate');
-            // echo '<pre>';
-            // var_dump($_POST);
-            // echo '<pre>';
+            $stmt = $pdo->query("SELECT * FROM cars");
             while ($row = $stmt->fetch()) :
-
-                // foreach ($pdo->query('SELECT *
-                //     FROM cars WHERE fromdate 
-                //     BETWEEN "2020-12-01" 
-                //     AND "2020-12-05"')
-                //     as $row) {
-                // }
             ?>
+
             <div class="cardCover">
                 <div class="card">
                     <div class="imgContainer">
@@ -157,7 +134,6 @@ include_once("../db/pdoconn.php");
             </div>
             <?php
             endwhile;
-            // }
             ?>
         </div>
 
