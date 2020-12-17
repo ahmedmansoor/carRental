@@ -1,3 +1,8 @@
+<?php
+include_once("../db/pdoconn.php");
+
+?>
+
 <html lang="en">
 
 <head>
@@ -49,10 +54,7 @@
             </p>
         </div>
 
-        <img class="imgBooking" src="../img/booking.svg" />
-
-        <!-- Search -->
-        <!-- <div class="searchBoxCar">
+        <div class="searchBoxCar">
             <div class="formSearchCar">
                 <form action="backend/auth.php" method="POST">
                     <div class="rowDetails">
@@ -62,7 +64,6 @@
                         <input class="inputSearch" type="text" name="location" placeholder="Select a Location"
                             required />
                         <input class="inputSearch" type="date" name="date" placeholder="date" required />
-                        <input class="inputSearch" type="time" name="time" placeholder="time" required />
                     </div>
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails4">Drop off details</p>
@@ -73,133 +74,57 @@
 
                         <input class="inputSearch" type="date" name="date" placeholder="date" required />
 
-                        <input class="inputSearch" type="time" name="time" placeholder="time" required />
                     </div>
                     <button type="submit" class="btnSearchCar">Search</button>
                 </form>
             </div>
         </div>
 
-        <div class="row"> -->
-        <!-- card1 -->
-        <!-- <div class="cardCover">
-                <div class="card">
-                    <div class="imgContainer">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                    </div>
-                    <div class="cardTextCover">
-                        <p class="carName">Audi RS6 Avant/RS7</p>
-                        <p class="carPrice">MVR 1000</p>
-                        <p class="perday">per day</p>
-                        <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
-                        </button>
-                    </div>
-                </div>
-            </div> -->
-
-        <!-- card2 -->
-        <!-- <div class="cardCover">
-                <div class="card">
-                    <div class="imgContainer">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                    </div>
-                    <div class="cardTextCover">
-                        <p class="carName">Audi RS6 Avant/RS7</p>
-                        <p class="carPrice">MVR 1000</p>
-                        <p class="perday">per day</p>
-                        <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
-                        </button>
-                    </div>
-                </div>
-            </div> -->
-
-        <!-- card3 -->
-        <!-- <div class="cardCover">
-                <div class="card">
-                    <div class="imgContainer">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                    </div>
-                    <div class="cardTextCover">
-                        <p class="carName">Audi RS6 Avant/RS7</p>
-                        <p class="carPrice">MVR 1000</p>
-                        <p class="perday">per day</p>
-                        <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main> -->
-
-
-        <div class="cardCover">
-            <div class="card">
-                <div class="imgContainer">
-                    <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                </div>
-                <div class="cardTextCover">
-                    <p class="carName" value>Audi RS6 Avant/RS7</p>
-                    <p class="carPrice">MVR 1000</p>
-                    <p class="perday">per day</p>
-                    <button type="button" class="btnBook">
-                        <a href="/user/checkout.html">Book now</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        </div>
+        <img class="imgBooking" src="../img/booking.svg" />
 
         <?php
 
-        require_once "../db/pdoconn.php";
+        // $stmt = $pdo->query("SELECT * FROM cars");
+        // while ($row = $stmt->fetch()) {
+        //     echo $row['carname'] . "<br />\n";
+        //     echo $row['image'] . "<br />\n";
+        //     echo $row['price'] . "<br />\n";
+        //     echo $row['location'] . "<br />\n";
+        //     echo $row['fromdate'] . "<br />\n";
+        //     echo $row['todate'] . "<br />\n";
 
-        echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
+        ?>
 
-        class TableRows extends RecursiveIteratorIterator
-        {
-            function __construct($it)
-            {
-                parent::__construct($it, self::LEAVES_ONLY);
-            }
+        <?php
+        $stmt = $pdo->query("SELECT * FROM cars");
+        while ($row = $stmt->fetch()) :
 
-            function current()
-            {
-                return "<td style='width:150px;border:1px solid black;'>" . parent::current() . "</td>";
-            }
+        ?>
 
-            function beginChildren()
-            {
-                echo "<tr>";
-            }
+        <div class="row">
+            <div class="cardCover">
+                <div class="card">
+                    <div class="imgContainer">
+                        <img class="imgCar" src="<?php echo $row['image'] ?>" />
+                    </div>
+                    <div class=" cardTextCover">
+                        <p class="carName" value><?php echo $row['carname'] ?></p>
+                        <p class="carPrice"><?php echo $row['price'] ?></p>
+                        <p class="perday">per day</p>
+                        <button type="button" class="btnBook">
+                            <a href="/user/checkout.html">Book now</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            function endChildren()
-            {
-                echo "</tr>" . "\n";
-            }
-        }
+    </main>
+    <?php
+        endwhile;
+?>
 
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM cars");
-            $stmt->execute();
-
-            // set the resulting array to associative
-            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
-                echo $v;
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-        $pdo = null;
-        echo "</table>";
-
-        ?>;
-
-        <!-- </body>
+</body>
 
 <footer class="footer">
     <div class="footerContainer">
@@ -207,4 +132,58 @@
     </div>
 </footer>
 
-</html> -->
+</html>
+
+<!-- <?php
+        // $stmt = $pdo->query("SELECT * FROM cars");
+        // while ($row = $stmt->fetch()) {
+        //     echo $row['carname'] . "<br />\n";
+        //     echo $row['image'] . "<br />\n";
+        //     echo $row['price'] . "<br />\n";
+        //     echo $row['location'] . "<br />\n";
+        //     echo $row['fromdate'] . "<br />\n";
+        //     echo $row['todate'] . "<br />\n";
+        // }
+
+        // echo "<table 'class='cardCover';'>";
+        // echo "<tr><th>Id</th><th>Carname</th><th>Image</th><th>Price</th><th>Location</th><th>ToDate</th><th>FromDate</th></tr>";
+
+        // class TableRows extends RecursiveIteratorIterator
+        // {
+        //     function __construct($it)
+        //     {
+        //         parent::__construct($it, self::LEAVES_ONLY);
+        //     }
+
+        //     function current()
+        //     {
+        //         return "<td 'class='cardCover';'>" . parent::current() . "</td>";
+        //     }
+
+        //     function beginChildren()
+        //     {
+        //         echo "<tr>";
+        //     }
+
+        //     function endChildren()
+        //     {
+        //         echo "</tr>" . "\n";
+        //     }
+        // }
+
+        // try {
+        //     $stmt = $pdo->prepare("SELECT * FROM cars");
+        //     $stmt->execute();
+
+        //     // set the resulting array to associative
+        //     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        //     foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
+        //         echo $v;
+        //     }
+        // } catch (PDOException $e) {
+        //     echo "Error: " . $e->getMessage();
+        // }
+        // $pdo = null;
+        // echo "</table>";
+
+        ?>
