@@ -9,8 +9,8 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
     // echo "Welcome to the member's area !";
 } else {
     echo "<script>
-            alert('Please log in first to see this page.');
-            window.location.href='../index.html';
+            alert('Must be an Admin to view this page');
+            window.location.href='../index.php';
             </script>";
 }
 
@@ -192,7 +192,7 @@ and ':todate' order by fromdate");
                         <p class="carPrice"><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
                         <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
+                            <a href="../backend/checkout.php">Book now</a>
                         </button>
                     </div>
                 </div>

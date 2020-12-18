@@ -6,9 +6,9 @@ session_start();
 
 if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
 } else {
-  echo "<script>
+    echo "<script>
             alert('Please log in first to see this page.');
-            window.location.href='../index.html';
+            window.location.href='../index.php';
             </script>";
 }
 
@@ -27,20 +27,20 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
     <header>
         <nav class="navBar">
             <h3 class="logo">
-                <a href="home.html">Car Rentals</a>
+                <a href="home.php">Car Rentals</a>
             </h3>
             <div>
                 <ul class="tabs">
                     <li class="home">
-                        <a href="home.html">Home</a>
+                        <a href="home.php">Home</a>
                     </li>
-                    <li class="home"><a href="cars.html" class="active">Cars</a></li>
-                    <li class="about"><a href="about.html">About</a></li>
+                    <li class="home"><a href="cars.php" class="active">Cars</a></li>
+                    <li class="about"><a href="about.php">About</a></li>
                     <li class="contact">
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
                     <button type="button" class="btnSignIn1">
-                        <a href="./profile.html">Profile</a>
+                        <a href="./profile.php">Profile</a>
                     </button>
                 </ul>
             </div>
@@ -106,7 +106,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                         <p class="carPrice">MVR 1000</p>
                         <p class="perday">per day</p>
                         <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
+                            <a href="../backend/checkout.php">Book now</a>
                         </button>
                     </div>
                 </div>

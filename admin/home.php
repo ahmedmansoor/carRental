@@ -7,8 +7,8 @@ session_start();
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 } else {
     echo "<script>
-            alert('Please log in first to see this page.');
-            window.location.href='../index.html';
+            alert('Must be an Admin to view this page');
+            window.location.href='../index.php';
             </script>";
 }
 
@@ -60,7 +60,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         </div>
 
         <button type="button" class="btnBookHome">
-            <a href="../admin/cars.html">Find a Car</a>
+            <a href="../admin/cars.php">Find a Car</a>
         </button>
         <!-- <button type="button" class="btnSignIn3">
             <a href="../index.html">Sign In</a>

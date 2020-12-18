@@ -7,7 +7,6 @@
 
 include_once("../db/pdoconn.php");
 
-
 // foreach ($pdo->query('SELECT * from users') as $row) {
 //     echo '<pre>';
 //     print_r($row);

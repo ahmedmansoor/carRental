@@ -8,7 +8,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
 } else {
     echo "<script>
             alert('Please log in first to see this page.');
-            window.location.href='../index.html';
+            window.location.href='../index.php';
             </script>";
 }
 
@@ -61,7 +61,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
         </div>
 
         <button type="button" class="btnBookHome">
-            <a href="../user/cars.html">Find a Car</a>
+            <a href="../user/cars.php">Find a Car</a>
         </button>
         <!-- <button type="button" class="btnSignIn3">
         <a href="../index.html">Sign In</a>
