@@ -1,30 +1,6 @@
 <?php
 include_once("../db/pdoconn.php");
 
-session_start();
-
-
-
-if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
-    // echo "Welcome to the member's area !";
-} else {
-    echo "<script>
-            alert('Please log in first to see this page.');
-            window.location.href='../index.html';
-            </script>";
-}
-
-// while ($row = $sql->fetch()) :
-
-
-
-
-// foreach ($pdo->query('SELECT *
-//     FROM cars WHERE fromdate 
-//     BETWEEN "2020-12-01" 
-//     AND "2020-12-05"')
-//     as $row) {
-// }
 ?>
 
 <html lang="en">
@@ -39,20 +15,20 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
     <header>
         <nav class="navBar">
             <h3 class="logo">
-                <a href="home.php">Car Rentals</a>
+                <a href="home.html">Car Rentals</a>
             </h3>
             <div>
                 <ul class="tabs">
                     <li class="home">
-                        <a href="home.php">Home</a>
+                        <a href="home.html">Home</a>
                     </li>
-                    <li class="home"><a href="cars.php" class="active">Cars</a></li>
-                    <li class="about"><a href="about.php">About</a></li>
+                    <li class="home"><a href="cars.html" class="active">Cars</a></li>
+                    <li class="about"><a href="about.html">About</a></li>
                     <li class="contact">
-                        <a href="contact.php">Contact</a>
+                        <a href="contact.html">Contact</a>
                     </li>
                     <button type="button" class="btnSignIn1">
-                        <a href="./profile.php">Profile</a>
+                        <a href="./profile.html">Profile</a>
                     </button>
                 </ul>
             </div>
@@ -80,8 +56,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         <div class="searchBoxCar">
             <div class="formSearchCar">
-                <form method="POST">
-                    <!-- <form action="cars.php" method="POST"> -->
+                <form action="cars.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails3">Pick-up details</p>
                     </div>
@@ -104,7 +79,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         </span>
                         <input class="inputSearch" type="date" name="fromdate" placeholder="date" required />
                         <?php
-                        $fromdate = "fromdate";
+                        $selectedfromdate = "fromdate";
                         ?>
                     </div>
                     <div class="rowDetails">
@@ -130,7 +105,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
                         <input class="inputSearch" type="date" name="todate" placeholder="date" required />
                         <?php
-                        $todate = "todate";
+                        $selectedtodate = "todate";
                         ?>
 
                     </div>
@@ -144,44 +119,38 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         <div class="row">
             <?php
-            if (isset($_POST["btnSearch"])) {
-                // echo '<pre>';
-                // var_dump($_POST);
-                // echo '<pre>';
-                try {
-                    $fromdate = trim($_POST['fromdate']);
-                    $todate = trim($_POST['todate']);
 
-                    //     $sql = $pdo->query("SELECT *
-                    // FROM cars WHERE fromdate BETWEEN ':fromdate'
-                    // AND ':todate' ORDER BY fromdate");
-                    //     $stmt = $pdo->prepare($sql);
-                    //     $stmt->bindParam('fromdate', $fromdate, PDO::PARAM_STR);
-                    //     $stmt->bindValue('todate', $todate, PDO::PARAM_STR);
-                    //     $stmt->execute();
-                    //     $count = $stmt->rowCount();
-                    //     echo '<pre>';
-                    //     // var_dump($_POST);
-                    //     var_dump($count);
-                    //     echo '<pre>';
 
-                    $stmt = $pdo->prepare("SELECT * from cars where fromdate between ':fromdate'
-and ':todate' order by fromdate");
-                    $stmt->execute(['fromdate' => $fromdate, 'todate' => $todate]);
-                    $rows = $stmt->fetchAll();
 
-                    foreach ($rows as $row) {
-                        //dumping to see whether it works
-                        var_dump($row);
-                    };
+            // if (isset($_POST["btnSearch"])) {
+            if (isset($_POST['btnSearch'])) {
+                $fromdate = $_POST['fromdate'];
+                $todate = $_POST['todate'];
 
-                    // if ($count == 0) {
-                    //     echo ('No Cars Found');
-                    // } else {
-                    //     while ($row = $stmt->fetch()) :
+                $sql = "SELECT * from cars where fromdate =:fromdate  AND todate =:todate";
+                $stmt = $pdo->prepare($sql);
+                echo '<pre>';
+                var_dump($_POST);
+                echo '<pre>';
+                $stmt->bindParam('fromdate', $fromdate, PDO::PARAM_STR);
+                $stmt->bindValue('todate', $todate, PDO::PARAM_STR);
+                // $row   = $stmt->fetch(PDO::FETCH_ASSOC);
+                while ($row = $stmt) :
+                    // $date = $stmt->fetch();
 
+                    // $stmt = $pdo->query('SELECT *
+                    // FROM cars WHERE  fromdate >= fromdate
+                    // AND todate < todate');
+
+
+
+                    // foreach ($pdo->query('SELECT *
+                    //     FROM cars WHERE fromdate 
+                    //     BETWEEN "2020-12-01" 
+                    //     AND "2020-12-05"')
+                    //     as $row) {
+                    // }
             ?>
-
             <div class="cardCover">
                 <div class="card">
                     <div class="imgContainer">
@@ -198,12 +167,7 @@ and ':todate' order by fromdate");
                 </div>
             </div>
             <?php
-
-                    //     endwhile;
-                    // }
-                } catch (PDOException $e) {
-                    echo "Error : " . $e->getMessage();
-                }
+                endwhile;
             }
             ?>
         </div>

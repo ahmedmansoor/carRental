@@ -5,6 +5,20 @@ require_once "../db/pdoconn.php";
 
 
 
+session_start();
+
+
+if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
+    echo "Welcome to the member's area !";
+} else {
+    echo "<script>
+            alert('Please log in first to see this page.');
+            window.location.href='../index.html';
+            </script>";
+}
+
+
+
 $target_dir = "../uploads/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
 // echo '<pre>';

@@ -55,15 +55,19 @@ if (isset($_POST['btnLogin'])) {
                 $_SESSION['username']   = $row['username'];
                 $_SESSION['password'] = $row['password'];
 
-                if ($_SESSION['username'] == "Admin" || "admin") {
+                // echo ($_SESSION['username']);
+
+                if ($_SESSION['username'] == "admin") {
+                    $_SESSION['loggedinAdmin'] = true;
                     echo "<script>
             alert('Login Successful! Welcome back Admin.');
-            window.location.href='../admin/home.html';
+            window.location.href='../admin/home.php';
             </script>";
                 } else {
+                    $_SESSION['loggedinUser'] = true;
                     echo "<script>
             alert('Login Successful!');
-            window.location.href='../user/home.html';
+            window.location.href='../user/home.php';
             </script>";
                 }
             } else {
