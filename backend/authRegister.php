@@ -16,9 +16,6 @@ include_once("../db/pdoconn.php");
 if (isset($_POST['btnRegister'])) {
 
     $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
-
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username=?");
     $stmt->execute([$username]);
     $user = $stmt->fetch();
@@ -34,13 +31,12 @@ if (isset($_POST['btnRegister'])) {
             'username' => $_POST['username'],
             'email' => $_POST['email'],
             'password' => $_POST['password'],
-            // 'password' => md5($_POST['password']),
             // 'password' => md5($password),
 
         ]);
         echo "<script>
-                    alert('Account Created! Please log in.');
-                    window.location.href='../index.php';
+                    alert('Login Successful!');
+                    window.location.href='auth.php';
                     </script>";
     }
 }

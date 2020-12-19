@@ -15,20 +15,20 @@ include_once("../db/pdoconn.php");
     <header>
         <nav class="navBar">
             <h3 class="logo">
-                <a href="home.html">Car Rentals</a>
+                <a href="home.php">Car Rentals</a>
             </h3>
             <div>
                 <ul class="tabs">
                     <li class="home">
-                        <a href="home.html">Home</a>
+                        <a href="home.php">Home</a>
                     </li>
-                    <li class="home"><a href="cars.html" class="active">Cars</a></li>
-                    <li class="about"><a href="about.html">About</a></li>
+                    <li class="home"><a href="cars.php" class="active">Cars</a></li>
+                    <li class="about"><a href="about.php">About</a></li>
                     <li class="contact">
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
                     <button type="button" class="btnSignIn1">
-                        <a href="./profile.html">Profile</a>
+                        <a href="./profile.php">Profile</a>
                     </button>
                 </ul>
             </div>
@@ -43,7 +43,7 @@ include_once("../db/pdoconn.php");
             </h2>
         </div>
         <button type="button" class="btnUploadCar">
-            <a href="./upload.html">Add Car</a>
+            <a href="add.php">Add Car</a>
         </button>
 
         <div class="bannerNoteCar">
@@ -113,8 +113,15 @@ include_once("../db/pdoconn.php");
 
         <div class="row">
             <?php
-            $stmt = $pdo->query("SELECT * FROM cars");
-            while ($row = $stmt->fetch()) :
+            // $stmt = $pdo->query("SELECT * FROM cars");
+            // while ($row = $stmt->fetch()) :
+            ?>
+
+            <?php
+            $result = $pdo->prepare("SELECT * FROM cars");
+            $result->execute();
+            for ($i = 0; $row = $result->fetch(); $i++) {
+                $id = $row['id'];
             ?>
 
             <div class="cardCover">
@@ -123,17 +130,37 @@ include_once("../db/pdoconn.php");
                         <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
                     <div class=" cardTextCover">
-                        <p class="carName" value><?php echo $row['carname'] ?></p>
-                        <p class="carPrice"><?php echo $row['price'] ?></p>
+                        <p class="carName" value=><?php echo $row['carname'] ?></p>
+                        <p class="mvr">MVR</p>
+                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
-                        <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
-                        </button>
+
+                        <form action="checkout.php" method="POST">
+                            <button type="sumbit" class="btnBookAdmin">
+                                <a> Book now</a>
+                            </button>
+                        </form>
+
+                        <div class="editdelete">
+                            <form method="POST" action="edit.php<?php echo '?id=' . $id; ?>">
+                                <button type="sumbit" class="btnEdit" class=" btnEdit">
+                                    <a> Edit</a>
+                                </button>
+                            </form>
+
+                            <form action="delete.php" method="POST">
+                                <button type="sumbit" name="btnDelete" class=" btnDelete">
+                                    <a> Delete</a>
+                                </button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
+            <?php } ?>
             <?php
-            endwhile;
+            // endwhile;
             ?>
         </div>
 

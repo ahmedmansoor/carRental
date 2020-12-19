@@ -156,7 +156,9 @@ include_once("../db/pdoconn.php");
                     <div class="imgContainer">
                         <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
+
                     <div class=" cardTextCover">
+
                         <p class="carName" value><?php echo $row['carname'] ?></p>
                         <p class="carPrice"><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>

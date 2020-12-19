@@ -187,12 +187,13 @@ and ':todate' order by fromdate");
                     <div class="imgContainer">
                         <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
+
                     <div class=" cardTextCover">
                         <p class="carName" value><?php echo $row['carname'] ?></p>
                         <p class="carPrice"><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
                         <button type="button" class="btnBook">
-                            <a href="../backend/checkout.php">Book now</a>
+                            <a href="../admin/checkout.php">Book now</a>
                         </button>
                     </div>
                 </div>
