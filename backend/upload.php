@@ -9,7 +9,7 @@ session_start();
 
 
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
-    echo "Welcome to the member's area !";
+    // echo "Welcome to the member's area !";
 } else {
     echo "<script>
             alert('Please log in first to see this page.');
@@ -83,12 +83,12 @@ if ($uploadOk == 0) {
 
         echo "<script>
             alert('Car added successfully.');
-            window.location.href='../admin/upload.html';
+            window.location.href='../admin/add.php';
             </script>";
     } else {
         echo "<script>
             alert('Sorry, there was an error uploading your file.');
-             window.location.href='../admin/upload.html';
+             window.location.href='../admin/add.php';
             </script>";
     }
 }

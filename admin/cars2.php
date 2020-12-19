@@ -148,11 +148,22 @@ include_once("../db/pdoconn.php");
                                 </button>
                             </form>
 
-                            <form action="delete.php" method="POST">
+                            <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST">
                                 <button type="sumbit" name="btnDelete" class=" btnDelete">
                                     <a> Delete</a>
                                 </button>
                             </form>
+                            <!-- <div class="dropdown">
+                                <button onclick="myFunction()" class="btnDelete1">Delete</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST"
+                                        class="btnDeleteConfirm">
+                                        <button>
+                                            <a>Confirm</a>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -163,6 +174,36 @@ include_once("../db/pdoconn.php");
             // endwhile;
             ?>
         </div>
+
+
+        <!-- <div class="dropdown">
+            <button onclick="myFunction()" class="btnDelete1">Delete</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Confirm</a>
+            </div>
+        </div> -->
+        <!-- 
+        <script>
+        /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.btnDelete1')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        </script> -->
 
     </main>
 
