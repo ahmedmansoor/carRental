@@ -20,5 +20,5 @@ if (isset($_POST['btnlogout'])) {
     session_start();
     unset($_SESSION["loggedinAdmin"]);
     unset($_SESSION["loggedinUser"]);
-    header("Location:../signin.php");
+    header("Location:../signin.html");
 }

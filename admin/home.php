@@ -18,7 +18,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
 <head>
     <title>Car Rental Maldives</title>
-
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 
@@ -92,10 +91,10 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <input class="inputSearch" type="date" name="date" placeholder="date" required />
                         <input class="inputSearch" type="date" name="date" placeholder="date" required />
                     </div>
-                    <div class="rowSearch">
+                    <!-- <div class="rowSearch">
                         <input class="inputSearch" type="time" name="time" placeholder="time" required />
                         <input class="inputSearch" type="time" name="time" placeholder="time" required />
-                    </div>
+                    </div> -->
                     <button type="submit" class="btnSearch">Search</button>
                 </form>
             </div>

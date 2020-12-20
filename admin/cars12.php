@@ -5,10 +5,6 @@ session_start();
 
 
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
-    // echo ($_SESSION['uid']);
-    // echo '<pre>';
-    // var_dump($_POST);
-    // echo '<pre>';
 } else {
     echo "<script>
             alert('Must be an Admin to view this page');
@@ -70,7 +66,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         <div class="searchBoxCar">
             <div class="formSearchCar">
-                <form action="cars.php" method="POST">
+                <form action="cars12.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails3">Pick-up details</p>
                     </div>
@@ -205,59 +201,14 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <?php
                 }
             } else {
-                $result = $pdo->prepare("SELECT * FROM cars");
-                $result->execute();
-                for ($i = 0; $row = $result->fetch(); $i++) {
-                    $id = $row['id'];
-                ?>
-            <div class="cardCover">
-                <div class="card">
-                    <div class="imgContainer">
-                        <img class="imgCar" src="<?php echo $row['image'] ?>" />
-                    </div>
-                    <div class=" cardTextCover">
-                        <p class="carName" value=><?php echo $row['carname'] ?></p>
-                        <p class="mvr">MVR</p>
-                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
-                        <p class="perday">per day</p>
-
-                        <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
-                            <button type="sumbit" class="btnBookAdmin">
-                                <a> Book now</a>
-                            </button>
-                        </form>
-
-                        <div class="editdelete">
-                            <form method="POST" action="edit.php<?php echo '?id=' . $id; ?>">
-                                <button type="sumbit" class="btnEdit" class=" btnEdit">
-                                    <a> Edit</a>
-                                </button>
-                            </form>
-
-                            <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST">
-                                <button type="sumbit" name="btnDelete" class=" btnDelete">
-                                    <a> Delete</a>
-                                </button>
-                            </form>
-                            <!-- <div class="dropdown">
-                                <button onclick="myFunction()" class="btnDelete1">Delete</button>
-                                <div id="myDropdown" class="dropdown-content">
-                                    <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST"
-                                        class="btnDeleteConfirm">
-                                        <button>
-                                            <a>Confirm</a>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div> -->
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <?php
-                }
+                echo
+                    "<script>
+            alert('An Error occured.');
+            </script>";
             }
+            ?>
+            <?php
+            // endwhile;
             ?>
         </div>
 

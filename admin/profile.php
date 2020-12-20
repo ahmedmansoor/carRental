@@ -60,16 +60,28 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <h2>Booking Information</h2>
         </div>
 
-        <div class="rowProfileBooking">
+        <?php
+        // include_once("../db/pdoconn.php");
+
+        $ID = $_GET['id'];
+
+        $result = $pdo->prepare("SELECT * FROM cars where id='$ID'");
+        $result->execute();
+        for ($i = 0; $row = $result->fetch(); $i++) {
+            $id = $row['id'];
+        ?>
+
+        <div class="rowCheckout">
             <!-- card1 -->
             <div class="cardCoverCheckout">
-                <div class="cardCheckout-car">
-                    <div class="imgContainerCheckout">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                    </div>
-                    <div class="cardTextCoverCheckout">
-                        <div class="carName">Audi RS6 Avant/RS7</div>
-                    </div>
+                <div class="imgContainerCheckout">
+                    <img class="imgCar" src="<?php echo $row['image'] ?>" />
+                </div>
+                <div class="cardTextCoverCheckout">
+                    <div class="carName"><?php echo $row['carname'] ?></div>
+                    <p class="mvrCheckout">MVR</p>
+                    <h2 class="carPrice"><?php echo $row['price'] ?></h2>
+                    <p class="perdayCheckout">per day</p>
                 </div>
             </div>
 
@@ -85,6 +97,28 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <p>Male' International Airport</p>
                         <p>12th October 2020</p>
                         <p>15:20</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <?php } ?>
+
+            <div class="paymentCover">
+                <!-- card2 -->
+                <div class="cardCoverCheckout">
+                    <div class="cardCheckout-text2">
+                        <div class="cardTextCoverCheckout2">
+                            <div class="carPriceCheckout">Summary of charges</div>
+                            <p>Perday: MVR 1000</p>
+                            <p>No. of days: 4</p>
+                            <br />
+                            <div class="carPrice">Total</div>
+                            <p>MVR 4000</p>
+                        </div>
+                        <button type="button" class="btnPay">
+                            <a href="/admin/profile.php">Confirm Booking</a>
+                        </button>
                     </div>
                 </div>
             </div>

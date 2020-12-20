@@ -1,6 +1,30 @@
 <?php
 include_once("../db/pdoconn.php");
 
+session_start();
+
+
+
+if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
+    // echo "Welcome to the member's area !";
+} else {
+    echo "<script>
+            alert('Must be an Admin to view this page');
+            window.location.href='../index.php';
+            </script>";
+}
+
+// while ($row = $sql->fetch()) :
+
+
+
+
+// foreach ($pdo->query('SELECT *
+//     FROM cars WHERE fromdate 
+//     BETWEEN "2020-12-01" 
+//     AND "2020-12-05"')
+//     as $row) {
+// }
 ?>
 
 <html lang="en">
@@ -43,7 +67,7 @@ include_once("../db/pdoconn.php");
             </h2>
         </div>
         <button type="button" class="btnUploadCar">
-            <a href="add.php">Add Car</a>
+            <a href="./upload.html">Add Car</a>
         </button>
 
         <div class="bannerNoteCar">
@@ -56,7 +80,8 @@ include_once("../db/pdoconn.php");
 
         <div class="searchBoxCar">
             <div class="formSearchCar">
-                <form action="backend/auth.php" method="POST">
+                <form method="POST">
+                    <!-- <form action="cars.php" method="POST"> -->
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails3">Pick-up details</p>
                     </div>
@@ -77,7 +102,10 @@ include_once("../db/pdoconn.php");
                                 <option>Jetty Number 6 (Malé)</option>
                             </select>
                         </span>
-                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
+                        <input class="inputSearch" type="date" name="fromdate" placeholder="date" required />
+                        <?php
+                        $fromdate = "fromdate";
+                        ?>
                     </div>
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails4">Drop off details</p>
@@ -100,10 +128,13 @@ include_once("../db/pdoconn.php");
                             </select>
                         </span>
 
-                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
+                        <input class="inputSearch" type="date" name="todate" placeholder="date" required />
+                        <?php
+                        $todate = "todate";
+                        ?>
 
                     </div>
-                    <button type="submit" class="btnSearchCar">Search</button>
+                    <button type="submit" name="btnSearch" class="btnSearchCar">Search</button>
                 </form>
             </div>
         </div>
@@ -113,15 +144,42 @@ include_once("../db/pdoconn.php");
 
         <div class="row">
             <?php
-            // $stmt = $pdo->query("SELECT * FROM cars");
-            // while ($row = $stmt->fetch()) :
-            ?>
+            if (isset($_POST["btnSearch"])) {
+                // echo '<pre>';
+                // var_dump($_POST);
+                // echo '<pre>';
+                try {
+                    $fromdate = trim($_POST['fromdate']);
+                    $todate = trim($_POST['todate']);
 
-            <?php
-            $result = $pdo->prepare("SELECT * FROM cars");
-            $result->execute();
-            for ($i = 0; $row = $result->fetch(); $i++) {
-                $id = $row['id'];
+                    //     $sql = $pdo->query("SELECT *
+                    // FROM cars WHERE fromdate BETWEEN ':fromdate'
+                    // AND ':todate' ORDER BY fromdate");
+                    //     $stmt = $pdo->prepare($sql);
+                    //     $stmt->bindParam('fromdate', $fromdate, PDO::PARAM_STR);
+                    //     $stmt->bindValue('todate', $todate, PDO::PARAM_STR);
+                    //     $stmt->execute();
+                    //     $count = $stmt->rowCount();
+                    //     echo '<pre>';
+                    //     // var_dump($_POST);
+                    //     var_dump($count);
+                    //     echo '<pre>';
+
+                    $stmt = $pdo->prepare("SELECT * from cars where fromdate between ':fromdate'
+and ':todate' order by fromdate");
+                    $stmt->execute(['fromdate' => $fromdate, 'todate' => $todate]);
+                    $rows = $stmt->fetchAll();
+
+                    foreach ($rows as $row) {
+                        //dumping to see whether it works
+                        var_dump($row);
+                    };
+
+                    // if ($count == 0) {
+                    //     echo ('No Cars Found');
+                    // } else {
+                    //     while ($row = $stmt->fetch()) :
+
             ?>
 
             <div class="cardCover">
@@ -129,81 +187,27 @@ include_once("../db/pdoconn.php");
                     <div class="imgContainer">
                         <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
+
                     <div class=" cardTextCover">
-                        <p class="carName" value=><?php echo $row['carname'] ?></p>
-                        <p class="mvr">MVR</p>
-                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
+                        <p class="carName" value><?php echo $row['carname'] ?></p>
+                        <p class="carPrice"><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
-
-                        <form action="checkout.php" method="POST">
-                            <button type="sumbit" class="btnBookAdmin">
-                                <a> Book now</a>
-                            </button>
-                        </form>
-
-                        <div class="editdelete">
-                            <form method="POST" action="edit.php<?php echo '?id=' . $id; ?>">
-                                <button type="sumbit" class="btnEdit" class=" btnEdit">
-                                    <a> Edit</a>
-                                </button>
-                            </form>
-
-                            <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST">
-                                <button type="sumbit" name="btnDelete" class="btnDelete">
-                                    <a> Delete</a>
-                                </button>
-                            </form>
-                            <div class="dropdown">
-                                <button onclick="myFunction()" class="btnDelete1">Delete</button>
-                                <div id="myDropdown" class="dropdown-content">
-                                    <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST"
-                                        class="btnDeleteConfirm">
-                                        <button>
-                                            <a>Confirm</a>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
+                        <button type="button" class="btnBook">
+                            <a href="../admin/checkout.php">Book now</a>
+                        </button>
                     </div>
                 </div>
             </div>
-            <?php } ?>
             <?php
-            // endwhile;
-            ?>
-        </div>
 
-
-        <!-- <div class="dropdown">
-            <button onclick="myFunction()" class="btnDelete1">Delete</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#home">Confirm</a>
-            </div>
-        </div> -->
-
-        <script>
-        /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.btnDelete1')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
+                    //     endwhile;
+                    // }
+                } catch (PDOException $e) {
+                    echo "Error : " . $e->getMessage();
                 }
             }
-        }
-        </script>
+            ?>
+        </div>
 
     </main>
 

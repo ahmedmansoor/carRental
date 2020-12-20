@@ -44,7 +44,7 @@ if ($uploadOk == 0) {
 todate ='$todate', image ='$target_file' WHERE id = '$get_id' ";
 
         $pdo->exec($sql);
-        echo "<script>alert('Car details updated.'); window.location='../admin/cars2.php'</script>";
+        echo "<script>alert('Car details updated.'); window.location='../admin/cars.php'</script>";
     } else {
         echo "<script>
             alert('Sorry, there was an error uploading your file.');

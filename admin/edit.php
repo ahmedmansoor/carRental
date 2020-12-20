@@ -61,7 +61,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
 
         <?php
-        include_once("../db/pdoconn.php");
+        // include_once("../db/pdoconn.php");
 
         $ID = $_GET['id'];
 

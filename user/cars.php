@@ -68,7 +68,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
         <!-- Search -->
         <div class="searchBoxCar">
             <div class="formSearchCar">
-                <form action="backend/auth.php" method="POST">
+                <form action="backend/checout.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails3">Pick-up details</p>
                     </div>
@@ -95,57 +95,35 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
         </div>
 
         <div class="row">
-            <!-- card1 -->
-            <div class="cardCover">
-                <div class="card">
-                    <div class="imgContainer">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                    </div>
-                    <div class="cardTextCover">
-                        <p class="carName">Audi RS6 Avant/RS7</p>
-                        <p class="carPrice">MVR 1000</p>
-                        <p class="perday">per day</p>
-                        <button type="button" class="btnBook">
-                            <a href="../backend/checkout.php">Book now</a>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <?php
+            $result = $pdo->prepare("SELECT * FROM cars WHERE fromdate BETWEEN '2020-12-01' AND '2020-12-10'");
+            $result->execute();
+            for ($i = 0; $row = $result->fetch(); $i++) {
+                $id = $row['id'];
+            ?>
 
-            <!-- card2 -->
             <div class="cardCover">
                 <div class="card">
                     <div class="imgContainer">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
+                        <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
-                    <div class="cardTextCover">
-                        <p class="carName">Audi RS6 Avant/RS7</p>
-                        <p class="carPrice">MVR 1000</p>
+                    <div class=" cardTextCover">
+                        <p class="carName" value=><?php echo $row['carname'] ?></p>
+                        <p class="mvr">MVR</p>
+                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
-                        <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- card3 -->
-            <div class="cardCover">
-                <div class="card">
-                    <div class="imgContainer">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                    </div>
-                    <div class="cardTextCover">
-                        <p class="carName">Audi RS6 Avant/RS7</p>
-                        <p class="carPrice">MVR 1000</p>
-                        <p class="perday">per day</p>
-                        <button type="button" class="btnBook">
-                            <a href="/user/checkout.html">Book now</a>
-                        </button>
+                        <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
+                            <button type="sumbit" class="btnBookAdmin">
+                                <a> Book now</a>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
+
     </main>
 </body>
 
