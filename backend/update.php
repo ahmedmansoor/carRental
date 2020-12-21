@@ -37,10 +37,11 @@ if ($uploadOk == 0) {
 
         $carname = $_POST['carname'];
         $price = $_POST['price'];
+        $location = $_POST['location'];
         $fromdate = $_POST['fromdate'];
         $todate = $_POST['todate'];
 
-        $sql = "UPDATE cars SET carname ='$carname', price ='$price', fromdate ='$fromdate', 
+        $sql = "UPDATE cars SET carname ='$carname', price ='$price', location ='$location', fromdate ='$fromdate', 
 todate ='$todate', image ='$target_file' WHERE id = '$get_id' ";
 
         $pdo->exec($sql);

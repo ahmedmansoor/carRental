@@ -86,16 +86,35 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <input type="number" name="price" class="form-control" required value=<?php echo $row['price']; ?>>
                 </div>
 
+                <div class="formUploadGroup">
+                    <label>Location</label><br /><br />
+                    <span class="locationDropdown locationDropdownAdmin">
+                        <select name="location" required>
+                            <option>No Location Selected</option>
+                            <option>Velana International Airport (Hulhule)</option>
+                            <option>Airport Ferry Terminal (Male)</option>
+                            <option>Hulhumalé Ferry Terminal (Male)</option>
+                            <option>Hulhumale Ferry Ferminal (Hulhumale)</option>
+                            <option>Villingili Ferry Terminal (Male)</option>
+                            <option>Jetty Number 1 (Male)</option>
+                            <option>Jetty Number 2 (Male)</option>
+                            <option>Jetty Number 3 (Male)</option>
+                            <option>Jetty Number 4 (Male)</option>
+                            <option>Jetty Number 5 (Male)</option>
+                            <option>Jetty Number 6 (Male)</option>
+                        </select>
+                    </span>
+                </div>
+
                 <div class="formUploadDate">
                     <div class="formUploadGroup-date">
                         <label>Available From</label>
-                        <input type="date" name="fromdate" class="formDate" required
-                            value=<?php echo $row['fromdate']; ?>>
+                        <input type="date" name="fromdtime" class="formDate" required="required">
                     </div>
 
-                    <div class="formUploadGroup">
+                    <div class="formUploadGroup-date">
                         <label>Available To</label>
-                        <input type="date" name="todate" class="formDate" required value=<?php echo $row['todate']; ?>>
+                        <input type="date" name="totime" class="formDate" required="required">
                     </div>
                 </div>
 

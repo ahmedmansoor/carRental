@@ -76,7 +76,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 <div class="formUploadGroup">
                     <label>Locations</label><br /><br />
                     <span class="locationDropdown locationDropdownAdmin">
-                        <select>
+                        <select name="location">
                             <option>No Location Selected</option>
                             <option>Velana International Airport (Hulhule)</option>
                             <option>Airport Ferry Terminal (Male)</option>
@@ -99,7 +99,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <input type="date" name="fromdate" class="formDate" required="required" />
                     </div>
 
-                    <div class="formUploadGroup">
+                    <div class="formUploadGroup-date">
                         <label>Available To</label>
                         <input type="date" name="todate" class="formDate" required="required" />
                     </div>

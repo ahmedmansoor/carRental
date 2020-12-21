@@ -156,8 +156,10 @@ a:after {
 }
 
 .btnUploadCar {
-  background-color: #fe7768;
-  border: 1px solid #fe7768;
+  border: 1px solid #ed893e;
+  background-color: #ed893e;
+  /* background-color: #fe7768;
+  border: 1px solid #fe7768; */
   border-radius: 5px;
   font-size: medium;
   width: 8em;
@@ -177,8 +179,8 @@ a:after {
 }
 
 .btnUploadCar:hover {
-  background-color: #dd5748;
-  border: 1px solid #dd5748;
+  background-color: #df7b30;
+  border: 1px solid #df7b30;
 }
 
 .btnBookHome {
@@ -235,10 +237,17 @@ a:after {
 }
 
 hr {
-  margin-top: 8rem;
   width: 100%;
   border: 1px solid #ccc;
   opacity: 0.5;
+}
+
+.hr1 {
+  margin-top: 8rem;
+}
+
+.hr2 {
+  margin-bottom: 2rem;
 }
 
 .imgCarHome2 {
@@ -593,6 +602,7 @@ h4 {
 
 .inputSearch {
   margin: 10px;
+  width: max-content;
 }
 
 .searchBox {
@@ -651,7 +661,8 @@ h4 {
 }
 
 .searchBoxCar input {
-  margin: 0 10px;
+  margin: 0 5px;
+  width: 157px;
 }
 
 .btnSearch {
@@ -674,7 +685,7 @@ h4 {
   border-radius: 5px;
   border: 1px solid #0056b3;
   border-color: #0056b3;
-  width: 96.3%;
+  width: 97%;
   height: 35px;
 
   /* float: right; */
@@ -693,7 +704,6 @@ h4 {
   /* 100% or center */
   margin-top: 2rem;
   display: flex;
-  /* width: 100%; */
   justify-content: left;
   align-items: center;
   padding-top: 0.2rem;
@@ -997,7 +1007,22 @@ label.formContact-label {
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
+  /* padding-top: 5rem; */
+  /* justify-content: center; */
   /* padding: 1rem; */
+}
+
+.searchResults {
+  color: #5e5e5e;
+  font-family: "button", sans-serif;
+  letter-spacing: 0.5;
+  line-height: 1.5;
+  /* text-align: left; */
+  inline-size: 30em;
+  font-size: medium;
+  /* margin-bottom: 8rem; */
+  margin-top: -2rem;
+  width: 100%;
 }
 
 /* .cPic {
@@ -1284,7 +1309,7 @@ label.formContact-label {
 }
 
 .formUpload {
-  /* width: 100%; */
+  /* width: 50%; */
   align-items: center;
   justify-content: center;
   justify-items: center;
@@ -1301,17 +1326,17 @@ label.formContact-label {
 }
 
 .formUploadGroup {
-  width: 30em;
+  width: 31.9em;
   margin-top: 20px;
 }
 
 .formUploadGroup-date {
-  width: 30em;
-  margin: 20px 20px 0 0;
+  width: 70em;
+  margin: 20px 10px 0 0;
 }
 
 .formUploadDate {
-  width: 30em;
+  width: 32.5em;
   display: flex;
 }
 
@@ -1322,7 +1347,7 @@ label.formContact-label {
   border-radius: 5px;
   border: 1px solid #0056b3;
   border-color: #0056b3;
-  width: 100%;
+  width: 98.3%;
   height: 35px;
   text-align: center;
   font-size: medium;
@@ -1360,6 +1385,7 @@ label.formContact-label {
   padding: 0.5em;
   border: 0;
   margin-left: 10px;
+  margin-right: 5px;
   border-radius: 3px;
   text-indent: 0.01px;
   text-overflow: "";

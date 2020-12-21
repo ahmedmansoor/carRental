@@ -66,7 +66,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         </button> -->
 
         <img class="imgCarHome1" src="../img/cars/CarHome1.png" />
-        <hr />
+        <hr class="hr1" />
         <img class="imgCarHome2" src="../img/cars/CarHome2.png" />
 
         <div class="bannerSearch">

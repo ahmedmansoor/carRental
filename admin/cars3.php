@@ -5,6 +5,10 @@ session_start();
 
 
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
+    // echo ($_SESSION['uid']);
+    // echo '<pre>';
+    // var_dump($_POST);
+    // echo '<pre>';
 } else {
     echo "<script>
             alert('Must be an Admin to view this page');
@@ -66,13 +70,13 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         <div class="searchBoxCar">
             <div class="formSearchCar">
-                <form action="cars.php" method="POST">
+                <form action="cars3.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails3">Pick-up details</p>
                     </div>
                     <div class="rowSearchCar">
                         <span class="locationDropdown">
-                            <select name="fromlocation" required="required">
+                            <select name="fromlocation">
                                 <option>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
@@ -87,14 +91,14 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                                 <option>Jetty Number 6 (Malé)</option>
                             </select>
                         </span>
-                        <input class="inputSearch" type="date" name="fromdate" required="required" />
-                        <input class="inputSearch" type="time" name="fromtime" required="required" />
+                        <input class="inputSearch" type="datetime-local" name="fromtime" placeholder="date"
+                            require=required />
                     </div>
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails4">Drop off details</p>
                     </div>
                     <div class="rowSearchCar">
-                        <span class="locationDropdown" required="required">
+                        <span class="locationDropdown" require>
                             <select name="tolocation">
                                 <option>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
@@ -111,8 +115,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             </select>
                         </span>
 
-                        <input class="inputSearch" type="date" name="todate" required="required" />
-                        <input class="inputSearch" type="time" name="totime" required="required" />
+                        <input class="inputSearch" type="datetime-local" name="totime" placeholder="date" required />
 
                     </div>
                     <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
@@ -135,64 +138,85 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <?php
             // $fromlocation = $fromdate = $tolocation = $todate = '';
 
-            if (isset($_POST['btnSearchCar'])) {
-                $fromlocation = $_POST['fromlocation'];
-                $tolocation = $_POST['tolocation'];
+            // if (isset($_POST['btnSearchCar'])) {
+            //     $fromlocation = $_POST['fromlocation'];
+            //     $tolocation = $_POST['tolocation'];
+            //     $fromtime = $_POST['fromtime'];
+            //     $totime = $_POST['totime'];
 
-                $fromdate = $_POST['fromdate'];
-                $todate = $_POST['todate'];
-
-                $fromtime = $_POST['fromtime'];
-                $totime = $_POST['totime'];
-
-                $_SESSION['fromlocation']   = $fromlocation;
-                $_SESSION['tolocation'] = $tolocation;
-
-                $_SESSION['fromdate'] = $fromdate;
-                $_SESSION['todate'] = $todate;
-
-                $_SESSION['fromtime'] = $fromtime;
-                $_SESSION['totime'] = $totime;
-
-                // $days = date_diff($fromtime, $totime);
-                // echo $days->format('Difference between two dates: %R%a days');
+            // $days = date_diff($fromtime, $totime);
+            // echo $days->format('Difference between two dates: %R%a days');
 
 
-                // echo ($fromlocation);
-                // echo '<pre>';
-                // var_dump($_POST);
-                // echo '<pre>';
+            // echo ($fromlocation);
+            // echo '<pre>';
+            // var_dump($_POST);
+            // echo '<pre>';
 
             ?>
 
-            <div class="searchResultsCover">
+            <!-- <div class="searchResultsCover">
                 <p class="searchResults">
-                    Showing available cars for location "<?php echo $fromlocation ?>"
-                    from "<?php echo $fromdate ?>"
-                    to "<?php echo $todate ?>"
+                    Showing results for "<?php echo $fromlocation ?>"
+                    from "<?php echo $fromtime ?>"
+                    to "<?php echo $totime ?>"
                     <br><br>
                 </p>
             </div>
 
-            <hr class="hr2" />
+            <hr class="hr2" /> -->
 
 
 
 
             <?php
 
+            if (isset($_POST['btnSearchCar'])) {
+                $fromlocation = $_POST['fromlocation'];
+                $tolocation = $_POST['tolocation'];
+                $fromtime = $_POST['fromtime'];
+                $totime = $_POST['totime'];
+
                 // $result = $pdo->prepare("SELECT * FROM cars");
                 $result = $pdo->prepare("SELECT * FROM cars 
                 WHERE location = '$fromlocation' 
-                AND fromdate BETWEEN '$fromdate' AND '$todate' 
-                AND todate BETWEEN '$fromdate' AND '$todate'");
+                AND fromtime BETWEEN '$fromtime' AND '$totime' 
+                AND totime BETWEEN '$fromtime' AND '$totime'");
                 // $result = $pdo->prepare("SELECT * FROM cars WHERE location = '$fromlocation' AND fromdate BETWEEN '2020-12-01' AND '2020-12-10'");
                 $result->execute();
                 for ($i = 0; $row = $result->fetch(); $i++) {
                     $id = $row['id'];
-                ?>
 
+                    echo '<pre>';
+                    var_dump($_POST);
+                    echo '<pre>';
 
+                    $count = $result->rowCount();
+                    $row   = $result->fetch(PDO::FETCH_ASSOC);
+                    if ($count = 0 && empty($row)) {
+            ?>
+
+            <div class="searchResultsCover">
+                <p class="searchResults">
+                    No cars availabe for "<?php echo $fromlocation ?>"
+                    from "<?php echo $fromtime ?>"
+                    to "<?php echo $totime ?>"
+                </p>
+            </div>
+
+            <hr class="hr2" />
+
+            <?php
+                    } else {
+                    ?>
+
+            <div class="searchResultsCover">
+                <p class="searchResults">
+                    Showing results for "<?php echo $fromlocation ?>"
+                    from "<?php echo $fromtime ?>"
+                    to "<?php echo $totime ?>"
+                </p>
+            </div>
 
             <div class="cardCover">
                 <div class="card">
@@ -240,13 +264,14 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 </div>
             </div>
             <?php
+                    }
                 }
             } else {
                 $result = $pdo->prepare("SELECT * FROM cars");
                 $result->execute();
                 for ($i = 0; $row = $result->fetch(); $i++) {
                     $id = $row['id'];
-                ?>
+                    ?>
             <div class="cardCover">
                 <div class="card">
                     <div class="imgContainer">

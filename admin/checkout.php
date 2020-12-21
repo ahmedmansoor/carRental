@@ -2,7 +2,8 @@
 include_once("../db/pdoconn.php");
 
 session_start();
-echo $_SESSION['uid'];
+// echo $_SESSION['uid'];
+
 
 
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
@@ -124,6 +125,30 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         <?php
         include_once("../db/pdoconn.php");
 
+
+        function dateDiffInDays($date1, $date2)
+        {
+            // Calculating the difference in timestamps 
+            $diff = strtotime($date2) - strtotime($date1);
+
+            // 1 day = 24 hours 
+            // 24 * 60 * 60 = 86400 seconds 
+            return abs(round($diff / 86400));
+        }
+
+        // Start date 
+        $date1 = $_SESSION['fromdate'];
+
+        // End date 
+        $date2 = $_SESSION['todate'];
+
+        // Function call to find date difference 
+        $dateDiff = dateDiffInDays($date1, $date2);
+
+        // Display the result 
+        // printf("Difference between two dates: "
+        //     . $dateDiff . " Days ");
+
         $ID = $_GET['id'];
 
         $result = $pdo->prepare("SELECT * FROM cars where id='$ID'");
@@ -131,6 +156,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         for ($i = 0; $row = $result->fetch(); $i++) {
             $id = $row['id'];
         ?>
+
 
         <div class="rowCheckout">
             <!-- card1 -->
@@ -150,20 +176,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 <div class="cardCheckout-text">
                     <div class="cardTextCoverCheckout">
                         <div class="carPrice">Pickup</div>
-                        <p>Male' International Airport</p>
-                        <p>16th October 2020</p>
-                        <p>15:20</p>
+                        <p><?php echo ($_SESSION['fromlocation']) ?></p>
+                        <p><?php echo ($_SESSION['fromdate']) ?></p>
+                        <p><?php echo ($_SESSION['fromtime']) ?></p>
                         <br />
                         <div class="carPrice">Return</div>
-                        <p>Male' International Airport</p>
-                        <p>12th October 2020</p>
-                        <p>15:20</p>
+                        <p><?php echo ($_SESSION['tolocation']) ?></p>
+                        <p><?php echo ($_SESSION['todate']) ?></p>
+                        <p><?php echo ($_SESSION['totime']) ?></p>
                     </div>
                 </div>
             </div>
-
-
-
 
             <div class="paymentCover">
                 <!-- card2 -->
@@ -171,8 +194,8 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="cardCheckout-text2">
                         <div class="cardTextCoverCheckout2">
                             <div class="carPriceCheckout">Summary of charges</div>
-                            <p>Perday: MVR 1000</p>
-                            <p>No. of days: 4</p>
+                            <p>MVR <?php echo $row['price'] ?></p>
+                            <p><?php echo $dateDiff ?> days</p>
                             <br />
                             <div class="carPrice">Total</div>
                             <p>MVR 4000</p>
