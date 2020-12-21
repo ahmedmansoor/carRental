@@ -481,7 +481,6 @@ h4 {
   font-size: medium;
   width: 100%;
   height: 35px;
-  margin-top: 4rem;
 }
 
 .btnPay a {
@@ -1063,12 +1062,13 @@ label.formContact-label {
 
 .rowCheckout {
   display: flex;
-  margin: 5rem 2rem 0 0;
+  margin: 5rem 2rem 200px 0;
   /* border: #0056b3 solid; */
   box-shadow: 0 0 15px 0 #0000001a;
   width: auto;
   padding: 25px;
-  height: 22rem;
+  height: 17.5rem;
+  /* margin-bottom: 5rem; */
 }
 
 .rowProfileBooking {
@@ -1093,7 +1093,7 @@ label.formContact-label {
 .cardCheckout-text {
   /* padding-bottom: 60px; */
   height: max-content;
-  width: 15rem;
+  width: 22rem;
   transition: 0.3s;
   /* z-index: 10; */
   /* margin: 1rem; */
@@ -1157,6 +1157,10 @@ label.formContact-label {
   margin-top: -0.5em;
 }
 
+.carPriceTotal {
+  color: #fc6e6e;
+}
+
 .carPriceCheckout {
   font-size: 23px;
   font-family: "Bitter", serif;
@@ -1184,6 +1188,11 @@ label.formContact-label {
 .mvr {
   color: #fc6e6e;
   font-family: "heading2";
+}
+
+.highlight {
+  color: #6d6d6d;
+  font-family: "button";
 }
 
 .mvrCheckout {
@@ -1294,7 +1303,7 @@ label.formContact-label {
 .paymentCover {
   float: right;
   display: flex;
-  margin-left: 27rem;
+  margin-left: 19rem;
   /* margin: -26rem 4rem 4rem 0; */
   /* border: #0056b3 solid; */
   /* box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1); */
@@ -1305,7 +1314,7 @@ label.formContact-label {
   float: right;
   display: flex;
   margin-top: -17rem;
-  margin-right: -3rem;
+  /* margin-right: -3rem; */
 }
 
 .formUpload {

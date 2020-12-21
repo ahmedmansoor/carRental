@@ -143,7 +143,9 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         $date2 = $_SESSION['todate'];
 
         // Function call to find date difference 
-        $dateDiff = dateDiffInDays($date1, $date2);
+        $days = dateDiffInDays($date1, $date2);
+
+
 
         // Display the result 
         // printf("Difference between two dates: "
@@ -151,10 +153,22 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         $ID = $_GET['id'];
 
+        $fromlocation = $_SESSION['fromlocation'];
+        $tolocation = $_SESSION['tolocation'];
+
+        $fromdate = $_SESSION['fromdate'];
+        $todate = $_SESSION['todate'];
+
+        $fromtime = $_SESSION['fromtime'];
+        $totime = $_SESSION['totime'];
+
+
         $result = $pdo->prepare("SELECT * FROM cars where id='$ID'");
         $result->execute();
         for ($i = 0; $row = $result->fetch(); $i++) {
             $id = $row['id'];
+
+            $total = $days * $row['price'];
         ?>
 
 
@@ -166,39 +180,83 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 </div>
                 <div class="cardTextCoverCheckout">
                     <div class="carName"><?php echo $row['carname'] ?></div>
-                    <p class="mvrCheckout">MVR</p>
+                    <!-- <p class="mvrCheckout">MVR</p>
                     <h2 class="carPrice"><?php echo $row['price'] ?></h2>
-                    <p class="perdayCheckout">per day</p>
+                    <p class="perdayCheckout">per day</p> -->
                 </div>
             </div>
 
-            <div class="cardCoverCheckout">
+            <div class="cardCoverCheckout2">
                 <div class="cardCheckout-text">
                     <div class="cardTextCoverCheckout">
                         <div class="carPrice">Pickup</div>
-                        <p><?php echo ($_SESSION['fromlocation']) ?></p>
-                        <p><?php echo ($_SESSION['fromdate']) ?></p>
-                        <p><?php echo ($_SESSION['fromtime']) ?></p>
+                        <p>Location:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['fromlocation']) ?>
+                            </span>
+                        </p>
+                        <p>Date:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['fromdate']) ?>
+                            </span>
+                        </p>
+                        <p>Time:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['fromtime']) ?>
+                            </span>
+                        </p>
                         <br />
+                    </div>
+                </div>
+                <div class="cardCheckout-text">
+                    <div class="cardTextCoverCheckout">
                         <div class="carPrice">Return</div>
-                        <p><?php echo ($_SESSION['tolocation']) ?></p>
-                        <p><?php echo ($_SESSION['todate']) ?></p>
-                        <p><?php echo ($_SESSION['totime']) ?></p>
+                        <p>Location:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['tolocation']) ?>
+                            </span>
+                        </p>
+                        <p>Date:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['todate']) ?>
+                            </span>
+                        </p>
+                        <p>Time:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['totime']) ?>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
+            <!-- </div>
 
+        <div class="rowCheckoutPay"> -->
             <div class="paymentCover">
                 <!-- card2 -->
                 <div class="cardCoverCheckout">
                     <div class="cardCheckout-text2">
-                        <div class="cardTextCoverCheckout2">
-                            <div class="carPriceCheckout">Summary of charges</div>
-                            <p>MVR <?php echo $row['price'] ?></p>
-                            <p><?php echo $dateDiff ?> days</p>
+                        <div class="cardTextCoverCheckout">
+                            <div class="carPrice">Summary of charges</div>
+                            <p>
+                                <span class="highlight">MVR
+                                    <?php echo $row['price'] ?>
+                                </span>
+                                per day
+                            </p>
+
+                            <p>No. of days: <span class="highlight">
+                                    <?php echo $days ?>
+                                </span>
+                            </p>
                             <br />
-                            <div class="carPrice">Total</div>
-                            <p>MVR 4000</p>
+                            <br />
+                            <div>Total</div>
+                            <p>
+                                <span class="carPrice carPriceTotal">
+                                    MVR <?php echo $total ?>
+                                </span>
+                            </p>
                         </div>
                         <form method="POST" action="booking.php<?php echo '?id=' . $id; ?>">
                             <button name="btnPay" type="sumbit" class="btnPay">

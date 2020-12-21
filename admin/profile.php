@@ -63,12 +63,15 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         <?php
         // include_once("../db/pdoconn.php");
 
-        $ID = $_GET['id'];
+        // echo $_SESSION['uid'];
+        $uid = $_SESSION['uid'];
 
-        $result = $pdo->prepare("SELECT * FROM cars where id='$ID'");
+        // $ID = '31';
+
+        $result = $pdo->prepare("SELECT carid FROM bookings where uid='$uid'");
         $result->execute();
         for ($i = 0; $row = $result->fetch(); $i++) {
-            $id = $row['id'];
+            $uid = $row['carid'];
         ?>
 
         <div class="rowCheckout">
@@ -79,110 +82,96 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 </div>
                 <div class="cardTextCoverCheckout">
                     <div class="carName"><?php echo $row['carname'] ?></div>
-                    <p class="mvrCheckout">MVR</p>
+                    <!-- <p class="mvrCheckout">MVR</p>
                     <h2 class="carPrice"><?php echo $row['price'] ?></h2>
-                    <p class="perdayCheckout">per day</p>
+                    <p class="perdayCheckout">per day</p> -->
                 </div>
             </div>
 
-            <div class="cardCoverCheckout">
+            <div class="cardCoverCheckout2">
                 <div class="cardCheckout-text">
                     <div class="cardTextCoverCheckout">
                         <div class="carPrice">Pickup</div>
-                        <p>Male' International Airport</p>
-                        <p>16th October 2020</p>
-                        <p>15:20</p>
+                        <p>Location:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['fromlocation']) ?>
+                            </span>
+                        </p>
+                        <p>Date:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['fromdate']) ?>
+                            </span>
+                        </p>
+                        <p>Time:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['fromtime']) ?>
+                            </span>
+                        </p>
                         <br />
+                    </div>
+                </div>
+                <div class="cardCheckout-text">
+                    <div class="cardTextCoverCheckout">
                         <div class="carPrice">Return</div>
-                        <p>Male' International Airport</p>
-                        <p>12th October 2020</p>
-                        <p>15:20</p>
+                        <p>Location:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['tolocation']) ?>
+                            </span>
+                        </p>
+                        <p>Date:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['todate']) ?>
+                            </span>
+                        </p>
+                        <p>Time:
+                            <span class="highlight">
+                                <?php echo ($_SESSION['totime']) ?>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
+            <!-- </div>
 
-
-            <?php } ?>
-
+        <div class="rowCheckoutPay"> -->
             <div class="paymentCover">
                 <!-- card2 -->
                 <div class="cardCoverCheckout">
                     <div class="cardCheckout-text2">
-                        <div class="cardTextCoverCheckout2">
-                            <div class="carPriceCheckout">Summary of charges</div>
-                            <p>Perday: MVR 1000</p>
-                            <p>No. of days: 4</p>
+                        <div class="cardTextCoverCheckout">
+                            <div class="carPrice">Summary of charges</div>
+                            <p>
+                                <span class="highlight">MVR
+                                    <?php echo $row['price'] ?>
+                                </span>
+                                per day
+                            </p>
+
+                            <p>No. of days: <span class="highlight">
+                                    <?php echo $days ?>
+                                </span>
+                            </p>
                             <br />
-                            <div class="carPrice">Total</div>
-                            <p>MVR 4000</p>
+                            <br />
+                            <div>Total</div>
+                            <p>
+                                <span class="carPrice carPriceTotal">
+                                    MVR <?php echo $total ?>
+                                </span>
+                            </p>
                         </div>
-                        <button type="button" class="btnPay">
-                            <a href="/admin/profile.php">Confirm Booking</a>
-                        </button>
+                        <!-- <form method="POST" action="booking.php<?php echo '?id=' . $id; ?>">
+                            <button name="btnPay" type="sumbit" class="btnPay">
+                                <a>Confirm Payment</a>
+                            </button>
+                        </form> -->
+
                     </div>
                 </div>
             </div>
         </div>
+        <?php } ?>
 
-        <div class="profilePaymentCover">
-            <div class="cardCoverCheckout">
-                <div class="cardCheckout-text">
-                    <div class="cardTextCoverCheckout">
-                        <div class="carPrice">Payment</div>
-                        <p>Perday: MVR 1000</p>
-                        <p>No. of days: 4</p>
-                        <br />
-                        <div class="carPrice">Total paid</div>
-                        <p>MVR 4000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="rowProfileBooking">
-            <!-- card2 -->
-            <div class="cardCoverCheckout">
-                <div class="cardCheckout-car">
-                    <div class="imgContainerCheckout">
-                        <img class="imgCar" src="../img/cars/Aston Martin DBS Superleggera.jpg" />
-                    </div>
-                    <div class="cardTextCoverCheckout">
-                        <div class="carName">Audi RS6 Avant/RS7</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cardCoverCheckout">
-                <div class="cardCheckout-text">
-                    <div class="cardTextCoverCheckout">
-                        <div class="carPrice">Pickup</div>
-                        <p>Male' International Airport</p>
-                        <p>16th October 2020</p>
-                        <p>15:20</p>
-                        <br />
-                        <div class="carPrice">Return</div>
-                        <p>Male' International Airport</p>
-                        <p>12th October 2020</p>
-                        <p>15:20</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="profilePaymentCover">
-            <div class="cardCoverCheckout">
-                <div class="cardCheckout-text">
-                    <div class="cardTextCoverCheckout">
-                        <div class="carPrice">Payment</div>
-                        <p>Perday: MVR 1000</p>
-                        <p>No. of days: 4</p>
-                        <br />
-                        <div class="carPrice">Total paid</div>
-                        <p>MVR 4000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 </body>
 

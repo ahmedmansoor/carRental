@@ -154,15 +154,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 $_SESSION['fromtime'] = $fromtime;
                 $_SESSION['totime'] = $totime;
 
-                // $days = date_diff($fromtime, $totime);
-                // echo $days->format('Difference between two dates: %R%a days');
-
-
-                // echo ($fromlocation);
-                // echo '<pre>';
-                // var_dump($_POST);
-                // echo '<pre>';
-
             ?>
 
             <div class="searchResultsCover">
@@ -175,9 +166,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             </div>
 
             <hr class="hr2" />
-
-
-
 
             <?php
 
@@ -255,7 +243,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class=" cardTextCover">
                         <p class="carName" value=><?php echo $row['carname'] ?></p>
                         <p class="mvr">MVR</p>
-                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
+                        <p class="wqq3" value=><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
 
                         <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
