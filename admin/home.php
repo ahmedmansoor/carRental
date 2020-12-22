@@ -76,26 +76,59 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         <!-- Search -->
         <div class="searchBox">
             <div class="formSearch">
-                <form action="backend/auth.php" method="POST">
+                <form action="../admin/cars.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails1">Pick-up details</p>
                         <p class="searchDetails searchDetails2">Drop off details</p>
                     </div>
                     <div class="rowSearch">
-                        <input class="inputSearch" type="text" name="location" placeholder="Select a Location"
-                            required />
-                        <input class="inputSearch" type="text" name="location" placeholder="Select a Location"
-                            required />
+                        <!-- <input class="inputSearch" type="text" name="location" placeholder="Select a Location" required /> -->
+                        <span class="locationDropdown inputSearch">
+                            <select name="fromlocation" required="required">
+                                <option selected disabled hidden>Select a Location</option>
+                                <option>Velana International Airport (Hulhulé)</option>
+                                <option>Airport Ferry Terminal (Malé)</option>
+                                <option>Hulhumalé Ferry Terminal (Malé)</option>
+                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Villingili Ferry Terminal (Malé)</option>
+                                <option>Jetty Number 1 (Malé)</option>
+                                <option>Jetty Number 2 (Malé)</option>
+                                <option>Jetty Number 3 (Malé)</option>
+                                <option>Jetty Number 4 (Malé)</option>
+                                <option>Jetty Number 5 (Malé)</option>
+                                <option>Jetty Number 6 (Malé)</option>
+                            </select>
+                        </span>
+                        <span class="locationDropdown inputSearch" required="required">
+                            <select name="tolocation">
+                                <option selected disabled hidden>Select a Location</option>
+                                <option>Velana International Airport (Hulhulé)</option>
+                                <option>Airport Ferry Terminal (Malé)</option>
+                                <option>Hulhumalé Ferry Terminal (Malé)</option>
+                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Villingili Ferry Terminal (Malé)</option>
+                                <option>Jetty Number 1 (Malé)</option>
+                                <option>Jetty Number 2 (Malé)</option>
+                                <option>Jetty Number 3 (Malé)</option>
+                                <option>Jetty Number 4 (Malé)</option>
+                                <option>Jetty Number 5 (Malé)</option>
+                                <option>Jetty Number 6 (Malé)</option>
+                            </select>
+                        </span>
                     </div>
                     <div class="rowSearch">
-                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
-                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
+                        <input class="inputSearch" type="date" name="fromdate" required="required" />
+
+                        <input class="inputSearch" type="date" name="todate" required="required" />
+
                     </div>
-                    <!-- <div class="rowSearch">
-                        <input class="inputSearch" type="time" name="time" placeholder="time" required />
-                        <input class="inputSearch" type="time" name="time" placeholder="time" required />
-                    </div> -->
-                    <button type="submit" class="btnSearch">Search</button>
+                    <div class="rowSearch">
+                        <input class="inputSearch" type="time" name="fromtime" required="required" />
+
+                        <input class="inputSearch" type="time" name="totime" required="required" />
+
+                    </div>
+                    <button type="submit" name="btnSearchCar" class="btnSearch">Search</button>
                 </form>
             </div>
         </div>

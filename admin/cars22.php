@@ -84,6 +84,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
             $_SESSION['fromtime'] = $fromtime;
             $_SESSION['totime'] = $totime;
+        }
         ?>
 
         <div class="searchBoxCar">
@@ -95,7 +96,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
                             <select name="fromlocation" required="required">
-                                <option selected disabled hidden><?php echo $fromlocation ?></option>
+                                <option selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -120,7 +121,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar" required="required">
                             <select name="tolocation">
-                                <option selected disabled hidden><?php echo $tolocation ?></option>
+                                <option selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -146,76 +147,14 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             </div>
         </div>
 
-        <?php
-        } else {
-
-        ?>
-
-        <div class="searchBoxCar">
-            <div class="formSearchCar">
-                <form action="cars.php" method="POST">
-                    <div class="rowDetails">
-                        <p class="searchDetails searchDetails3">Pick-up details</p>
-                    </div>
-                    <div class="rowSearchCar">
-                        <span class="locationDropdown locationDropdownCar">
-                            <select name="fromlocation" required="required">
-                                <option selected disabled hidden>No Location Selected</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
-                            </select>
-                        </span>
-                        <input class="inputSearch" type="date" name="fromdate" required="required" />
-                        <input class="inputSearch" type="time" name="fromtime" required="required" />
-                    </div>
-                    <div class="rowDetails">
-                        <p class="searchDetails searchDetails4">Drop off details</p>
-                    </div>
-                    <div class="rowSearchCar">
-                        <span class="locationDropdown locationDropdownCar" required="required">
-                            <select name="tolocation">
-                                <option selected disabled hidden>No Location Selected</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
-                            </select>
-                        </span>
-
-                        <input class="inputSearch" type="date" name="todate" required="required" />
-                        <input class="inputSearch" type="time" name="totime" required="required" />
-
-                    </div>
-                    <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
-                </form>
-            </div>
-        </div>
-
-        <?php
-        }
-        // $result = $pdo->query("SELECT * FROM cars");
-        // while ($row = $stmt->fetch()) :
-        ?>
         <img class="imgBookingAdmin" src="../img/booking.svg" />
 
 
         <div class="row">
+            <?php
+            // $stmt = $pdo->query("SELECT * FROM cars");
+            // while ($row = $stmt->fetch()) :
+            ?>
             <?php
             // $fromlocation = $fromdate = $tolocation = $todate = '';
 
@@ -238,16 +177,13 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 $_SESSION['fromtime'] = $fromtime;
                 $_SESSION['totime'] = $totime;
 
-                $fromdatefomat = date("d-m-Y", strtotime($fromdate));
-                $todatefomat = date("d-m-Y", strtotime($todate));
-
             ?>
 
             <div class="searchResultsCover">
                 <p class="searchResults">
-                    Showing available cars for location <span class="resultsTxt">"<?php echo $fromlocation ?>"</span>
-                    from <span class="resultsTxt"> <?php echo $fromdatefomat ?> </span>
-                    to <span class="resultsTxt"><?php echo $todatefomat ?> </span>
+                    Showing available cars for location "<?php echo $fromlocation ?>"
+                    from "<?php echo $fromdate ?>"
+                    to "<?php echo $todate ?>"
                     <br><br>
                 </p>
             </div>
@@ -261,13 +197,13 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 WHERE location = '$fromlocation' 
                 AND fromdate BETWEEN '$fromdate' AND '$todate' 
                 AND todate BETWEEN '$fromdate' AND '$todate'");
-
+                // $result = $pdo->prepare("SELECT * FROM cars WHERE location = '$fromlocation' AND fromdate BETWEEN '2020-12-01' AND '2020-12-10'");
                 $result->execute();
                 for ($i = 0; $row = $result->fetch(); $i++) {
                     $id = $row['id'];
-
-
                 ?>
+
+
 
             <div class="cardCover">
                 <div class="card">
@@ -275,7 +211,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
                     <div class=" cardTextCover">
-                        <p class="location" value=><?php echo $row['location'] ?></p>
                         <p class="carName" value=><?php echo $row['carname'] ?></p>
                         <p class="mvr">MVR</p>
                         <p class="carPrice" value=><?php echo $row['price'] ?></p>

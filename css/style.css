@@ -247,6 +247,7 @@ hr {
 
 .hr2 {
   margin-bottom: 2rem;
+  margin-right: 2rem;
 }
 
 .imgCarHome2 {
@@ -578,11 +579,11 @@ h4 {
 }
 
 .bannerSearch {
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-family: "brand", sans-serif;
   font-size: 22px;
   float: left;
-  margin-left: 23.3rem;
+  margin-left: 12rem;
   letter-spacing: 1.5;
 }
 
@@ -630,9 +631,9 @@ h4 {
 }
 
 .searchDetails2 {
-  margin-right: 70px;
+  margin-right: 11.6rem;
   float: right;
-  margin-bottom: -0.9rem;
+  /* margin-bottom: -0.9rem; */
 }
 
 .searchDetails3 {
@@ -670,7 +671,7 @@ h4 {
   border-radius: 5px;
   border: 1px solid #0056b3;
   border-color: #0056b3;
-  width: 95.5%;
+  width: 97.2%;
   height: 35px;
   text-align: center;
   font-size: medium;
@@ -683,7 +684,7 @@ h4 {
   border-radius: 5px;
   border: 1px solid #0056b3;
   border-color: #0056b3;
-  width: 97%;
+  width: 98%;
   height: 35px;
 
   /* float: right; */
@@ -712,12 +713,6 @@ h4 {
 }
 
 .btnSearch:hover {
-  background-color: #fe7768;
-  border: 2px solid #fe7768;
-  color: #fff;
-}
-
-.btnSearchCar:hover {
   background-color: #063c75;
   border: 2px solid #063c75;
   color: #fff;
@@ -1188,6 +1183,13 @@ label.formContact-label {
   margin-top: -0.5em;
 }
 
+.resultsTxt {
+  color: #0056b3;
+  font-size: 20px;
+  font-family: "Bitter", serif;
+  margin-top: -0.5em;
+}
+
 .carPriceTotal {
   color: #fc6e6e;
 }
@@ -1201,6 +1203,12 @@ label.formContact-label {
   color: #212529;
   font-family: "text", sans-serif;
   font-size: 15px;
+}
+
+.location {
+  color: #5e5e5e;
+  font-size: small;
+  margin-bottom: -1.3em;
 }
 
 .perday {
@@ -1261,22 +1269,6 @@ label.formContact-label {
   margin-right: 5px;
 }
 
-.btnEdit {
-  background-color: #ced4da;
-  /* background-color: #f3d967; */
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-  font-size: medium;
-  width: 120px;
-  height: 35px;
-  float: left;
-  /* z-index: 20; */
-  margin: 1rem 0 0 2rem;
-  /* margin: -3.5rem; */
-  /* margin-right: 1px; */
-  /* margin-left: 20rem; */
-}
-
 .btnDelete {
   background-color: #fc6e6e;
   border: 1px #fc6e6e;
@@ -1319,9 +1311,10 @@ label.formContact-label {
   width: 120px;
   height: 35px;
   float: right;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
   margin-right: -0.5rem;
   /* margin-right: 5px; */
+  margin-bottom: 0;
 }
 
 .btnDeleteProfile a {
@@ -1431,6 +1424,17 @@ label.formContact-label {
 
 .locationDropdownAdmin select {
   width: 100%;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.locationDropdownCar {
+  margin-right: 15px;
+}
+
+.locationDropdownCar select {
+  width: 100%;
+  margin-left: 10px;
 }
 
 .locationDropdown select {
@@ -1439,8 +1443,7 @@ label.formContact-label {
   font-size: small;
   padding: 0.5em;
   border: 0;
-  margin-left: 10px;
-  margin-right: 5px;
+
   border-radius: 3px;
   text-indent: 0.01px;
   text-overflow: "";

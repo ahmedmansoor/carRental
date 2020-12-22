@@ -180,7 +180,6 @@ $days = dateDiffInDays($date1, $date2);
                                 </span>
                             </p>
                             <br />
-                            <br />
                             <div>Total</div>
                             <p>
                                 <span class="carPrice ">
