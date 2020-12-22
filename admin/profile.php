@@ -12,6 +12,25 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             </script>";
 }
 
+function dateDiffInDays($date1, $date2)
+{
+    // Calculating the difference in timestamps 
+    $diff = strtotime($date2) - strtotime($date1);
+
+    // 1 day = 24 hours 
+    // 24 * 60 * 60 = 86400 seconds 
+    return abs(round($diff / 86400));
+}
+
+// Start date 
+$date1 = $_SESSION['fromdate'];
+
+// End date 
+$date2 = $_SESSION['todate'];
+
+// Function call to find date difference 
+$days = dateDiffInDays($date1, $date2);
+
 ?>
 
 
@@ -50,14 +69,15 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
     <main>
         <div class="bannerCheckout">
-            <h2>User Name</h2>
+            <h2><?php echo $username = $_SESSION['username']; ?></h2>
         </div>
+
         <form action="../backend/logout.php" method="POST">
             <button name="btnlogout" class="btnSignOut">Log Out</button>
         </form>
 
         <div class="profileBookingHeader">
-            <h2>Booking Information</h2>
+            <h2>Your Bookings</h2>
         </div>
 
         <?php
@@ -68,13 +88,21 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         // $ID = '31';
 
-        $result = $pdo->prepare("SELECT carid FROM bookings where uid='$uid'");
+        $result = $pdo->prepare("SELECT carid FROM bookings WHERE uid='$uid'");
         $result->execute();
         for ($i = 0; $row = $result->fetch(); $i++) {
             $uid = $row['carid'];
+
+            $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = '$uid'");
+            $stmt->execute();
+            for ($i = 0; $row = $stmt->fetch(); $i++) {
+                $id = $row['id'];
+
+                $total = $days * $row['price'];
+
         ?>
 
-        <div class="rowCheckout">
+        <div class="rowCheckoutProfile">
             <!-- card1 -->
             <div class="cardCoverCheckout">
                 <div class="imgContainerCheckout">
@@ -137,7 +165,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <div class="paymentCover">
                 <!-- card2 -->
                 <div class="cardCoverCheckout">
-                    <div class="cardCheckout-text2">
+                    <div class="cardCheckout-profile">
                         <div class="cardTextCoverCheckout">
                             <div class="carPrice">Summary of charges</div>
                             <p>
@@ -155,10 +183,15 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             <br />
                             <div>Total</div>
                             <p>
-                                <span class="carPrice carPriceTotal">
+                                <span class="carPrice ">
                                     MVR <?php echo $total ?>
                                 </span>
                             </p>
+                            <form action="../backend/deleteBooking.php<?php echo '?id=' . $id; ?>" method="POST">
+                                <button type="sumbit" name="btnDelete" class=" btnDeleteProfile">
+                                    <a>Delete</a>
+                                </button>
+                            </form>
                         </div>
                         <!-- <form method="POST" action="booking.php<?php echo '?id=' . $id; ?>">
                             <button name="btnPay" type="sumbit" class="btnPay">
@@ -170,7 +203,10 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 </div>
             </div>
         </div>
-        <?php } ?>
+        <?php
+            }
+        }
+        ?>
 
     </main>
 </body>

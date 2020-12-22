@@ -200,8 +200,7 @@ a:after {
   border: 1px solid #f2636c;
   border-radius: 5px;
   float: right;
-  margin-right: 2rem;
-
+  margin-right: 1rem;
   font-size: medium;
   width: 7em;
   height: 35px;
@@ -560,7 +559,7 @@ h4 {
   display: flex;
   position: relative;
   margin: 0;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
 }
 
@@ -601,7 +600,7 @@ h4 {
 
 .inputSearch {
   margin: 10px;
-  width: max-content;
+  /* width: max-content; */
 }
 
 .searchBox {
@@ -1071,6 +1070,29 @@ label.formContact-label {
   /* margin-bottom: 5rem; */
 }
 
+.rowCheckoutProfile {
+  display: flex;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  /* border: #0056b3 solid; */
+  box-shadow: 0 0 15px 0 #0000001a;
+  width: auto;
+  padding: 25px;
+  height: 17.5rem;
+  /* margin-bottom: 5rem; */
+}
+
+.rowCheckoutProfile :hover {
+  display: flex;
+  margin: 1rem 2rem 0 0;
+  /* border: #0056b3 solid; */
+  box-shadow: 0 0 15px 0 #0000001a;
+  width: auto;
+  padding: 25px;
+  height: 17.5rem;
+  /* margin-bottom: 5rem; */
+}
+
 .rowProfileBooking {
   display: flex;
   /* margin: 2rem 2rem 5rem 0; */
@@ -1105,7 +1127,16 @@ label.formContact-label {
   height: max-content;
   width: 15rem;
   transition: 0.3s;
-  z-index: 10;
+  float: right;
+  /* margin: 1rem; */
+  /* box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1); */
+}
+
+.cardCheckout-profile {
+  /* padding-bottom: 60px; */
+  margin-left: 2rem;
+  height: max-content;
+  transition: 0.3s;
   float: right;
   /* margin: 1rem; */
   /* box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1); */
@@ -1240,7 +1271,7 @@ label.formContact-label {
   height: 35px;
   float: left;
   /* z-index: 20; */
-  margin-left: 1px;
+  margin: 1rem 0 0 2rem;
   /* margin: -3.5rem; */
   /* margin-right: 1px; */
   /* margin-left: 20rem; */
@@ -1252,16 +1283,9 @@ label.formContact-label {
   border-radius: 5px;
   font-size: medium;
   width: 120px;
-
   height: 35px;
   float: right;
-  /* z-index: 20; */
   margin-right: 5px;
-
-  /* margin: 10px 0; */
-  /* margin: -3.5rem; */
-  /* margin-right: 5px; */
-  /* margin-left: 20rem; */
 }
 
 .row p {
@@ -1285,6 +1309,28 @@ label.formContact-label {
 .btnEdit:hover {
   background-color: #c5c6c7;
   /* background-color: #ffd620; */
+}
+
+.btnDeleteProfile {
+  background-color: #fc6e6e;
+  border: 1px #fc6e6e;
+  border-radius: 5px;
+  font-size: medium;
+  width: 120px;
+  height: 35px;
+  float: right;
+  margin-top: 1.5rem;
+  margin-right: -0.5rem;
+  /* margin-right: 5px; */
+}
+
+.btnDeleteProfile a {
+  color: #fff;
+  padding: 5px;
+}
+
+.btnDeleteProfile:hover {
+  background-color: #ff5e5e;
 }
 
 .btnDelete a {
@@ -1523,27 +1569,6 @@ label.formContact-label {
   background-color: #942a25 \9;
 }
 
-.btnDelete1 {
-  background-color: #fc6e6e;
-  color: white;
-  padding: 7px;
-  font-size: medium;
-  cursor: pointer;
-  width: 120px;
-  border: 1px #fc6e6e;
-  border-radius: 5px;
-  margin-right: 5px;
-  height: 35px;
-  align-self: center;
-}
-
-/* z-index: 20; */
-
-.btnDelete1:hover,
-.btnDelete1:focus {
-  background-color: #ff5e5e;
-}
-
 .dropdown {
   font-family: "button";
   position: relative;
@@ -1577,23 +1602,6 @@ label.formContact-label {
 
 .show {
   display: block;
-}
-
-.btnDeleteConfirm {
-  margin: 0;
-  background-color: #ced4da;
-
-  min-width: 70px;
-
-  /* font-family: "button";
-  font-size: medium; */
-}
-
-.btnDeleteConfirm a {
-  letter-spacing: 1;
-
-  /* font-family: "button";
-  font-size: medium; */
 }
 
 .btnEdit {
