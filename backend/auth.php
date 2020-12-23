@@ -71,17 +71,20 @@ if (isset($_POST['btnLogin'])) {
                 if ($_SESSION['username'] == "admin") {
                     $_SESSION['loggedinAdmin'] = true;
                     $_SESSION['uid'] = $row['uid'];
-                    echo "<script>
-            alert('Login Successful! Welcome back Admin.');
-            window.location.href='../admin/home.php';
-            </script>";
+                    header("Location:../admin/home.php");
+
+                    //         echo "<script>
+                    // alert('Login Successful! Welcome back Admin.');
+                    // window.location.href='../admin/home.php';
+                    // </script>";
                 } else {
                     $_SESSION['loggedinUser'] = true;
                     $_SESSION['uid'] = $row['uid'];
-                    echo "<script>
-            alert('Login Successful!');
-            window.location.href='../user/home.php';
-            </script>";
+                    header("Location:../user/home.php");
+                    //         echo "<script>
+                    // alert('Login Successful!');
+                    // window.location.href='../user/home.php';
+                    // </script>";
                 }
             } else {
                 echo

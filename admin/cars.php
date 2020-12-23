@@ -3,6 +3,13 @@ include_once("../db/pdoconn.php");
 
 session_start();
 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
+    // last request was more than 15 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time 
+    session_destroy();   // destroy session data in storage
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+
 
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 } else {
@@ -94,7 +101,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     </div>
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
-                            <select name="fromlocation" required="required">
+                            <select name="fromlocation" required>
                                 <option selected disabled hidden><?php echo $fromlocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
@@ -118,8 +125,8 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <p class="searchDetails searchDetails4">Drop off details</p>
                     </div>
                     <div class="rowSearchCar">
-                        <span class="locationDropdown locationDropdownCar" required="required">
-                            <select name="tolocation">
+                        <span class="locationDropdown locationDropdownCar">
+                            <select name="tolocation" required>
                                 <option selected disabled hidden><?php echo $tolocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
@@ -159,7 +166,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     </div>
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
-                            <select name="fromlocation" required="required">
+                            <select name="fromlocation" required>
                                 <option selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
@@ -181,7 +188,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <p class="searchDetails searchDetails4">Drop off details</p>
                     </div>
                     <div class="rowSearchCar">
-                        <span class="locationDropdown locationDropdownCar" required="required">
+                        <span class="locationDropdown locationDropdownCar" required>
                             <select name="tolocation">
                                 <option selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
@@ -209,8 +216,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         <?php
         }
-        // $result = $pdo->query("SELECT * FROM cars");
-        // while ($row = $stmt->fetch()) :
+
         ?>
         <img class="imgBookingAdmin" src="../img/booking.svg" />
 

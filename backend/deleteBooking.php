@@ -2,11 +2,6 @@
 include_once("../db/pdoconn.php");
 
 session_start();
-// echo $_SESSION['uid'];
-
-$uid = $_SESSION['uid'];
-
-
 
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 } else {
@@ -20,7 +15,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 $get_id = $_GET['id'];
 
 
-$sql = "DELETE FROM bookings WHERE carid = '$get_id' && uid = $uid";
+$sql = "DELETE FROM bookings WHERE id = $get_id";
 
 // use exec() because no results are returned
 $pdo->exec($sql);

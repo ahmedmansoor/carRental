@@ -1,23 +1,8 @@
-<?php
-include_once("../db/pdoconn.php");
-
-session_start();
-
-
-if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
-} else {
-    echo "<script>
-            alert('Must be an Admin to view this page');
-            window.location.href='../index.php';
-            </script>";
-}
-
-?>
-
 <html lang="en">
 
 <head>
     <title>Car Rental Maldives</title>
+
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 
@@ -36,7 +21,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <li class="about"><a href="about.php">About</a></li>
                     <li class="contact"><a href="contact.php">Contact</a></li>
                     <button type="button" class="btnSignIn1">
-                        <a href="./profile.php">Profile</a>
+                        <a href="../index.php">Sign In</a>
                     </button>
                 </ul>
             </div>
@@ -59,14 +44,14 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         </div>
 
         <button type="button" class="btnBookHome">
-            <a href="../admin/cars.php">Find a Car</a>
+            <a href="../pages/cars.html">Find a Car</a>
         </button>
-        <!-- <button type="button" class="btnSignIn3">
-            <a href="../index.html">Sign In</a>
-        </button> -->
+        <button type="button" class="btnSignIn3">
+            <a href="../signin.php">Sign In</a>
+        </button>
 
         <img class="imgCarHome1" src="../img/cars/CarHome1.png" />
-        <hr class="hr1" />
+        <hr />
         <img class="imgCarHome2" src="../img/cars/CarHome2.png" />
 
         <div class="bannerSearch">
@@ -76,7 +61,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         <!-- Search -->
         <div class="searchBox">
             <div class="formSearch">
-                <form action="../admin/cars.php" method="POST">
+                <form action="../user/cars.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails1">Pick-up details</p>
                         <p class="searchDetails searchDetails2">Drop off details</p>

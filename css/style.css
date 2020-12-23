@@ -233,6 +233,7 @@ a:after {
   float: right;
   width: 35rem;
   margin-top: -15rem;
+  margin-bottom: 1rem;
 }
 
 hr {
@@ -583,7 +584,7 @@ h4 {
   font-family: "brand", sans-serif;
   font-size: 22px;
   float: left;
-  margin-left: 12rem;
+  margin-left: 16rem;
   letter-spacing: 1.5;
 }
 

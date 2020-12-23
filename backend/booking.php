@@ -4,14 +4,6 @@ include_once("../db/pdoconn.php");
 session_start();
 
 
-if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
-} else {
-    echo "<script>
-            alert('Must be an Admin to view this page');
-            window.location.href='../index.php';
-            </script>";
-}
-
 
 // $result = $pdo->prepare("SELECT * FROM users");
 // $result->execute();
@@ -65,6 +57,8 @@ if (isset($_POST['btnPay'])) {
     $uid = $_SESSION['uid'];
     $id = $_GET['id'];
 
+    $days = $_SESSION['days'];
+
 
     // echo $_SESSION['uid'];
 
@@ -84,8 +78,8 @@ if (isset($_POST['btnPay'])) {
     //     $id = $row['id'];
 
     try {
-        $sql = "INSERT INTO bookings (uid, carid, fromlocation, tolocation, fromdate, todate, fromtime, totime) 
-                VALUES(:uid, :id, :fromlocation, :tolocation, :fromdate, :todate, :fromtime, :totime)";
+        $sql = "INSERT INTO bookings (uid, carid, fromlocation, tolocation, fromdate, todate, fromtime, totime, days) 
+                VALUES(:uid, :id, :fromlocation, :tolocation, :fromdate, :todate, :fromtime, :totime, :days)";
 
         // $sql = "INSERT INTO bookings (uid, id, fromlocation, tolocation, fromtime, totime) 
         //         VALUES(:uid, :id, :fromlocation, :tolocation, :fromtime, :totime)";
@@ -103,11 +97,22 @@ if (isset($_POST['btnPay'])) {
 
             'fromtime' => $fromtime,
             'totime' => $totime,
+            'days' => $days,
+
         ]);
-        echo "<script>
+        if ($_SESSION['username'] == "admin") {
+            $_SESSION['loggedinAdmin'] = true;
+            echo "<script>
             alert('Booking Confirmed!');
             window.location.href='../admin/profile.php';
             </script>";
+        } else {
+            $_SESSION['loggedinUser'] = true;
+            echo "<script>
+            alert('Booking Confirmed!');
+            window.location.href='../user/profile.php';
+            </script>";
+        }
     } catch (PDOException $e) {
         echo "Error : " . $e->getMessage();
     }

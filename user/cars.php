@@ -3,6 +3,12 @@ include_once("../db/pdoconn.php");
 
 session_start();
 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
+    // last request was more than 15 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time 
+    session_destroy();   // destroy session data in storage
+}
+$_SESSION['LAST_ACTIVITY'] = time();
 
 if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
 } else {
@@ -66,41 +72,209 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
         <img class="imgBooking" src="../img/booking.svg" />
 
         <!-- Search -->
+        <?php
+        if (isset($_POST['btnSearchCar'])) {
+            $fromlocation = $_POST['fromlocation'];
+            $tolocation = $_POST['tolocation'];
+
+            $fromdate = $_POST['fromdate'];
+            $todate = $_POST['todate'];
+
+            $fromtime = $_POST['fromtime'];
+            $totime = $_POST['totime'];
+
+            $_SESSION['fromlocation']   = $fromlocation;
+            $_SESSION['tolocation'] = $tolocation;
+
+            $_SESSION['fromdate'] = $fromdate;
+            $_SESSION['todate'] = $todate;
+
+            $_SESSION['fromtime'] = $fromtime;
+            $_SESSION['totime'] = $totime;
+        ?>
+
         <div class="searchBoxCar">
             <div class="formSearchCar">
-                <form action="backend/checout.php" method="POST">
+                <form action="cars.php" method="POST">
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails3">Pick-up details</p>
                     </div>
                     <div class="rowSearchCar">
-                        <input class="inputSearch" type="text" name="location" placeholder="Select a Location"
-                            required />
-                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
-                        <input class="inputSearch" type="time" name="time" placeholder="time" required />
+                        <span class="locationDropdown locationDropdownCar">
+                            <select name="fromlocation" required="required">
+                                <option selected disabled hidden><?php echo $fromlocation ?></option>
+                                <option>Velana International Airport (Hulhulé)</option>
+                                <option>Airport Ferry Terminal (Malé)</option>
+                                <option>Hulhumalé Ferry Terminal (Malé)</option>
+                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Villingili Ferry Terminal (Malé)</option>
+                                <option>Jetty Number 1 (Malé)</option>
+                                <option>Jetty Number 2 (Malé)</option>
+                                <option>Jetty Number 3 (Malé)</option>
+                                <option>Jetty Number 4 (Malé)</option>
+                                <option>Jetty Number 5 (Malé)</option>
+                                <option>Jetty Number 6 (Malé)</option>
+                            </select>
+                        </span>
+                        <input class="inputSearch" type="date" name="fromdate" required="required"
+                            value="<?php echo $fromdate ?>" />
+                        <input class="inputSearch" type="time" name="fromtime" required="required"
+                            value="<?php echo $fromtime ?>" />
                     </div>
                     <div class="rowDetails">
                         <p class="searchDetails searchDetails4">Drop off details</p>
                     </div>
                     <div class="rowSearchCar">
-                        <input class="inputSearch" type="text" name="location" placeholder="Select a Location"
-                            required />
+                        <span class="locationDropdown locationDropdownCar" required="required">
+                            <select name="tolocation">
+                                <option selected disabled hidden><?php echo $tolocation ?></option>
+                                <option>Velana International Airport (Hulhulé)</option>
+                                <option>Airport Ferry Terminal (Malé)</option>
+                                <option>Hulhumalé Ferry Terminal (Malé)</option>
+                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Villingili Ferry Terminal (Malé)</option>
+                                <option>Jetty Number 1 (Malé)</option>
+                                <option>Jetty Number 2 (Malé)</option>
+                                <option>Jetty Number 3 (Malé)</option>
+                                <option>Jetty Number 4 (Malé)</option>
+                                <option>Jetty Number 5 (Malé)</option>
+                                <option>Jetty Number 6 (Malé)</option>
+                            </select>
+                        </span>
 
-                        <input class="inputSearch" type="date" name="date" placeholder="date" required />
+                        <input class="inputSearch" type="date" name="todate" required="required"
+                            value="<?php echo $todate ?>" />
+                        <input class="inputSearch" type="time" name="totime" required="required"
+                            value="<?php echo $totime ?>" />
 
-                        <input class="inputSearch" type="time" name="time" placeholder="time" required />
                     </div>
-                    <button type="submit" class="btnSearchCar">Search</button>
+                    <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
                 </form>
             </div>
         </div>
 
+        <?php
+        } else {
+
+        ?>
+
+        <div class="searchBoxCar">
+            <div class="formSearchCar">
+                <form action="cars.php" method="POST">
+                    <div class="rowDetails">
+                        <p class="searchDetails searchDetails3">Pick-up details</p>
+                    </div>
+                    <div class="rowSearchCar">
+                        <span class="locationDropdown locationDropdownCar">
+                            <select name="fromlocation" required="required">
+                                <option selected disabled hidden>No Location Selected</option>
+                                <option>Velana International Airport (Hulhulé)</option>
+                                <option>Airport Ferry Terminal (Malé)</option>
+                                <option>Hulhumalé Ferry Terminal (Malé)</option>
+                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Villingili Ferry Terminal (Malé)</option>
+                                <option>Jetty Number 1 (Malé)</option>
+                                <option>Jetty Number 2 (Malé)</option>
+                                <option>Jetty Number 3 (Malé)</option>
+                                <option>Jetty Number 4 (Malé)</option>
+                                <option>Jetty Number 5 (Malé)</option>
+                                <option>Jetty Number 6 (Malé)</option>
+                            </select>
+                        </span>
+                        <input class="inputSearch" type="date" name="fromdate" required="required" />
+                        <input class="inputSearch" type="time" name="fromtime" required="required" />
+                    </div>
+                    <div class="rowDetails">
+                        <p class="searchDetails searchDetails4">Drop off details</p>
+                    </div>
+                    <div class="rowSearchCar">
+                        <span class="locationDropdown locationDropdownCar" required="required">
+                            <select name="tolocation">
+                                <option selected disabled hidden>No Location Selected</option>
+                                <option>Velana International Airport (Hulhulé)</option>
+                                <option>Airport Ferry Terminal (Malé)</option>
+                                <option>Hulhumalé Ferry Terminal (Malé)</option>
+                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Villingili Ferry Terminal (Malé)</option>
+                                <option>Jetty Number 1 (Malé)</option>
+                                <option>Jetty Number 2 (Malé)</option>
+                                <option>Jetty Number 3 (Malé)</option>
+                                <option>Jetty Number 4 (Malé)</option>
+                                <option>Jetty Number 5 (Malé)</option>
+                                <option>Jetty Number 6 (Malé)</option>
+                            </select>
+                        </span>
+
+                        <input class="inputSearch" type="date" name="todate" required="required" />
+                        <input class="inputSearch" type="time" name="totime" required="required" />
+
+                    </div>
+                    <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <?php
+        }
+        // $result = $pdo->query("SELECT * FROM cars");
+        // while ($row = $stmt->fetch()) :
+        ?>
+        <img class="imgBookingAdmin" src="../img/booking.svg" />
+
+
         <div class="row">
             <?php
-            $result = $pdo->prepare("SELECT * FROM cars WHERE fromdate BETWEEN '2020-12-01' AND '2020-12-10'");
-            $result->execute();
-            for ($i = 0; $row = $result->fetch(); $i++) {
-                $id = $row['id'];
+            // $fromlocation = $fromdate = $tolocation = $todate = '';
+
+            if (isset($_POST['btnSearchCar'])) {
+                $fromlocation = $_POST['fromlocation'];
+                $tolocation = $_POST['tolocation'];
+
+                $fromdate = $_POST['fromdate'];
+                $todate = $_POST['todate'];
+
+                $fromtime = $_POST['fromtime'];
+                $totime = $_POST['totime'];
+
+                $_SESSION['fromlocation']   = $fromlocation;
+                $_SESSION['tolocation'] = $tolocation;
+
+                $_SESSION['fromdate'] = $fromdate;
+                $_SESSION['todate'] = $todate;
+
+                $_SESSION['fromtime'] = $fromtime;
+                $_SESSION['totime'] = $totime;
+
+                $fromdatefomat = date("d-m-Y", strtotime($fromdate));
+                $todatefomat = date("d-m-Y", strtotime($todate));
+
             ?>
+
+            <div class="searchResultsCover">
+                <p class="searchResults">
+                    Showing available cars for location <span class="resultsTxt">"<?php echo $fromlocation ?>"</span>
+                    from <span class="resultsTxt"> <?php echo $fromdatefomat ?> </span>
+                    to <span class="resultsTxt"><?php echo $todatefomat ?> </span>
+                    <br><br>
+                </p>
+            </div>
+
+            <hr class="hr2" />
+
+            <?php
+
+                // $result = $pdo->prepare("SELECT * FROM cars");
+                $result = $pdo->prepare("SELECT * FROM cars 
+                WHERE location = '$fromlocation' 
+                AND fromdate BETWEEN '$fromdate' AND '$todate' 
+                AND todate BETWEEN '$fromdate' AND '$todate'");
+
+                $result->execute();
+                for ($i = 0; $row = $result->fetch(); $i++) {
+                    $id = $row['id'];
+
+
+                ?>
 
             <div class="cardCover">
                 <div class="card">
@@ -108,22 +282,54 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                         <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
                     <div class=" cardTextCover">
+                        <p class="location" value=><?php echo $row['location'] ?></p>
                         <p class="carName" value=><?php echo $row['carname'] ?></p>
                         <p class="mvr">MVR</p>
                         <p class="carPrice" value=><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
 
                         <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
-                            <button type="sumbit" class="btnBookAdmin">
-                                <a> Book now</a>
+                            <button type="sumbit" name="btnBook" class=" btnBookAdmin">
+                                <a>Book now</a>
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-            <?php } ?>
-        </div>
+            <?php
+                }
+            } else {
+                $result = $pdo->prepare("SELECT * FROM cars");
+                $result->execute();
+                for ($i = 0; $row = $result->fetch(); $i++) {
+                    $id = $row['id'];
+                ?>
+            <div class="cardCover">
+                <div class="card">
+                    <div class="imgContainer">
+                        <img class="imgCar" src="<?php echo $row['image'] ?>" />
+                    </div>
+                    <div class=" cardTextCover">
+                        <p class="location" value=><?php echo $row['location'] ?></p>
+                        <p class="carName" value=><?php echo $row['carname'] ?></p>
+                        <p class="mvr">MVR</p>
+                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
+                        <p class="perday">per day</p>
 
+                        <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
+                            <button type="sumbit" name="btnBook" class="btnBookAdmin">
+                                <a>Book now</a>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
     </main>
 </body>
 

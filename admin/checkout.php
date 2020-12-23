@@ -59,68 +59,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <a href="./cars.php">Go back (Cars)</a>
         </div>
 
-        <!-- Search -->
-        <!-- <div class="searchBoxCar">
-        <div class="formSearchCar">
-          <form action="backend/auth.php" method="POST">
-            <div class="rowDetails">
-              <p class="searchDetails searchDetails3">Pick-up details</p>
-            </div>
-            <div class="rowSearchCar">
-              <input
-                class="inputSearch"
-                type="text"
-                name="location"
-                placeholder="Select a Location"
-                required
-              />
-              <input
-                class="inputSearch"
-                type="date"
-                name="date"
-                placeholder="date"
-                required
-              />
-              <input
-                class="inputSearch"
-                type="time"
-                name="time"
-                placeholder="time"
-                required
-              />
-            </div>
-            <div class="rowDetails">
-              <p class="searchDetails searchDetails4">Drop off details</p>
-            </div>
-            <div class="rowSearchCar">
-              <input
-                class="inputSearch"
-                type="text"
-                name="location"
-                placeholder="Select a Location"
-                required
-              />
-
-              <input
-                class="inputSearch"
-                type="date"
-                name="date"
-                placeholder="date"
-                required
-              />
-
-              <input
-                class="inputSearch"
-                type="time"
-                name="time"
-                placeholder="time"
-                required
-              />
-            </div>
-            <button type="submit" class="btnSearchCar">Search</button>
-          </form>
-        </div>
-      </div> -->
 
         <?php
         include_once("../db/pdoconn.php");
@@ -161,6 +99,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         $fromtime = $_SESSION['fromtime'];
         $totime = $_SESSION['totime'];
+        $_SESSION['days'] = $days;
 
 
         $result = $pdo->prepare("SELECT * FROM cars where id='$ID'");
@@ -258,7 +197,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                                 </span>
                             </p>
                         </div>
-                        <form method="POST" action="booking.php<?php echo '?id=' . $id; ?>">
+                        <form method="POST" action="../backend/booking.php<?php echo '?id=' . $id; ?>">
                             <button name="btnPay" type="sumbit" class="btnPay">
                                 <a>Confirm Payment</a>
                             </button>

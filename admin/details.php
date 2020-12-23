@@ -2,6 +2,8 @@
 include_once("../db/pdoconn.php");
 
 session_start();
+// echo $_SESSION['uid'];
+
 
 
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
@@ -12,28 +14,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             </script>";
 }
 
-// function dateDiffInDays($date1, $date2)
-// {
-//     // Calculating the difference in timestamps 
-//     $diff = strtotime($date2) - strtotime($date1);
-
-//     // 1 day = 24 hours 
-//     // 24 * 60 * 60 = 86400 seconds 
-//     return abs(round($diff / 86400));
-// }
-
-// // Start date 
-// $date1 = $fromdate;
-
-// // End date 
-// $date2 = $todate;
-
-// // Function call to find date difference 
-// $days = dateDiffInDays($date1, $date2);
-
-
 ?>
-
 
 <html lang="en">
 
@@ -61,7 +42,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <a href="contact.php">Contact</a>
                     </li>
                     <button type="button" class="btnSignIn1">
-                        <a href="profile.php">Profile</a>
+                        <a href="./profile.php">Profile</a>
                     </button>
                 </ul>
             </div>
@@ -70,52 +51,66 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
     <main>
         <div class="bannerCheckout">
-            <h2><?php echo $username = $_SESSION['username']; ?></h2>
+            <h2>Checkout</h2>
         </div>
 
-        <form action="../backend/logout.php" method="POST">
-            <button name="btnlogout" class="btnSignOut">Log Out</button>
-        </form>
-
-        <div class="profileBookingHeader">
-            <h2>Your Bookings</h2>
+        <div class="bannerNoteCheckout">
+            <i class="material-icons">reply</i>
+            <a href="./cars.php">Go back (Cars)</a>
         </div>
+
 
         <?php
-        // include_once("../db/pdoconn.php");
+        include_once("../db/pdoconn.php");
 
-        // echo $_SESSION['uid'];
-        $uid = $_SESSION['uid'];
 
-        // $ID = '31';
+        function dateDiffInDays($date1, $date2)
+        {
+            // Calculating the difference in timestamps 
+            $diff = strtotime($date2) - strtotime($date1);
 
-        $result = $pdo->prepare("SELECT * FROM bookings WHERE uid='$uid'");
+            // 1 day = 24 hours 
+            // 24 * 60 * 60 = 86400 seconds 
+            return abs(round($diff / 86400));
+        }
+
+        // Start date 
+        $date1 = $_SESSION['fromdate'];
+
+        // End date 
+        $date2 = $_SESSION['todate'];
+
+        // Function call to find date difference 
+        $days = dateDiffInDays($date1, $date2);
+
+
+
+        // Display the result 
+        // printf("Difference between two dates: "
+        //     . $dateDiff . " Days ");
+
+        $ID = $_GET['id'];
+
+        $fromlocation = $_SESSION['fromlocation'];
+        $tolocation = $_SESSION['tolocation'];
+
+        $fromdate = $_SESSION['fromdate'];
+        $todate = $_SESSION['todate'];
+
+        $fromtime = $_SESSION['fromtime'];
+        $totime = $_SESSION['totime'];
+
+
+        $result = $pdo->prepare("SELECT * FROM cars where id='$ID'");
         $result->execute();
         for ($i = 0; $row = $result->fetch(); $i++) {
-            $bookingid = $row['id'];
-            $uid = $row['carid'];
-            $fromlocation = $row['fromlocation'];
-            $tolocation = $row['tolocation'];
+            $id = $row['id'];
 
-            $fromdate = $row['fromdate'];
-            $todate = $row['todate'];
-
-            $fromtime = $row['fromtime'];
-            $totime = $row['totime'];
-
-            $days = $row['days'];
-
-
-            $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = '$uid'");
-            $stmt->execute();
-            for ($i = 0; $row = $stmt->fetch(); $i++) {
-                $id = $row['id'];
-
-                $total = $days * $row['price'];
-
+            $total = $days * $row['price'];
         ?>
 
-        <div class="rowCheckoutProfile">
+
+        <div class="rowCheckout">
             <!-- card1 -->
             <div class="cardCoverCheckout">
                 <div class="imgContainerCheckout">
@@ -135,17 +130,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <div class="carPrice">Pickup</div>
                         <p>Location:
                             <span class="highlight">
-                                <?php echo $fromlocation ?>
+                                <?php echo ($_SESSION['fromlocation']) ?>
                             </span>
                         </p>
                         <p>Date:
                             <span class="highlight">
-                                <?php echo $fromdate ?>
+                                <?php echo ($_SESSION['fromdate']) ?>
                             </span>
                         </p>
                         <p>Time:
                             <span class="highlight">
-                                <?php echo $fromtime ?>
+                                <?php echo ($_SESSION['fromtime']) ?>
                             </span>
                         </p>
                         <br />
@@ -156,17 +151,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <div class="carPrice">Return</div>
                         <p>Location:
                             <span class="highlight">
-                                <?php echo $tolocation ?>
+                                <?php echo ($_SESSION['tolocation']) ?>
                             </span>
                         </p>
                         <p>Date:
                             <span class="highlight">
-                                <?php echo $todate ?>
+                                <?php echo ($_SESSION['todate']) ?>
                             </span>
                         </p>
                         <p>Time:
                             <span class="highlight">
-                                <?php echo $totime ?>
+                                <?php echo ($_SESSION['totime']) ?>
                             </span>
                         </p>
                     </div>
@@ -178,7 +173,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <div class="paymentCover">
                 <!-- card2 -->
                 <div class="cardCoverCheckout">
-                    <div class="cardCheckout-profile">
+                    <div class="cardCheckout-text2">
                         <div class="cardTextCoverCheckout">
                             <div class="carPrice">Summary of charges</div>
                             <p>
@@ -193,33 +188,25 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                                 </span>
                             </p>
                             <br />
+                            <br />
                             <div>Total</div>
                             <p>
-                                <span class="carPrice ">
+                                <span class="carPrice carPriceTotal">
                                     MVR <?php echo $total ?>
                                 </span>
                             </p>
-                            <form action="../backend/deleteBooking.php<?php echo '?id=' . $bookingid; ?>" method="POST">
-                                <button type="sumbit" name="btnDelete" class=" btnDeleteProfile">
-                                    <a>Delete</a>
-                                </button>
-                            </form>
                         </div>
-                        <!-- <form method="POST" action="booking.php<?php echo '?id=' . $id; ?>">
+                        <form method="POST" action="../backend/booking.php<?php echo '?id=' . $id; ?>">
                             <button name="btnPay" type="sumbit" class="btnPay">
                                 <a>Confirm Payment</a>
                             </button>
-                        </form> -->
+                        </form>
 
                     </div>
                 </div>
             </div>
         </div>
-        <?php
-            }
-        }
-        ?>
-
+        <?php } ?>
     </main>
 </body>
 
