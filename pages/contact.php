@@ -3,14 +3,6 @@
 include_once("../db/pdoconn.php");
 session_start();
 
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
-    // last request was more than 15 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time 
-    session_destroy();   // destroy session data in storage
-}
-$_SESSION['LAST_ACTIVITY'] = time();
-
-
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
     header("Location:../admin/contact.php");
 } else {
@@ -78,7 +70,8 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         <div class="formContactBody">
             <div id="formContact">
                 <h3 class="formContact-h3">Contact us via email</h3>
-                <form id="formContact-form-id" class="formContact-form-class" method="post" action="contact-form-process.php">
+                <form id="formContact-form-id" class="formContact-form-class" method="post"
+                    action="contact-form-process.php">
                     <div class="formContact-form-group">
                         <label for="Name" class="formContact-label">Your name</label>
                         <div class="formContact-input-group">
@@ -96,12 +89,14 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="formContact-form-group">
                         <label for="Message" class="formContact-label">Your message</label>
                         <div class="formContact-input-group">
-                            <textarea id="Message" name="Message" class="formContact-form-control" rows="6" maxlength="3000" required></textarea>
+                            <textarea id="Message" name="Message" class="formContact-form-control" rows="6"
+                                maxlength="3000" required></textarea>
                         </div>
                     </div>
 
                     <div class="formContact-form-group">
-                        <button type="submit" id="formContact-button" class="formContact-btn formContact-btn-primary formContact-btn-lg formContact-btn-block">
+                        <button type="submit" id="formContact-button"
+                            class="formContact-btn formContact-btn-primary formContact-btn-lg formContact-btn-block">
                             Send Message
                         </button>
                     </div>

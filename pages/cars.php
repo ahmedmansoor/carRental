@@ -1,3 +1,19 @@
+<?php
+
+include_once("../db/pdoconn.php");
+session_start();
+
+if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
+    header("Location:../admin/cars.php");
+} else {
+    if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
+        header("Location:../user/cars.php");
+    } else {
+    }
+}
+
+?>
+
 <html lang="en">
 
 <head>
@@ -50,7 +66,6 @@
 
         <!-- Search -->
         <?php
-        include_once("../db/pdoconn.php");
 
         if (isset($_POST['btnSearchCar'])) {
             $fromlocation = $_POST['fromlocation'];

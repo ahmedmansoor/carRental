@@ -3,12 +3,14 @@
 include_once("../db/pdoconn.php");
 session_start();
 
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
-    // last request was more than 15 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time 
-    session_destroy();   // destroy session data in storage
+if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
+    header("Location:../index.php");
+} else {
+    if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
+        header("Location:..index.php");
+    } else {
+    }
 }
-$_SESSION['LAST_ACTIVITY'] = time();
 
 ?>
 

@@ -1,3 +1,19 @@
+<?php
+
+include_once("../db/pdoconn.php");
+session_start();
+
+if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
+    header("Location:../admin/home.php");
+} else {
+    if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
+        header("Location:../user/home.php");
+    } else {
+    }
+}
+
+?>
+
 <html lang="en">
 
 <head>
