@@ -261,7 +261,8 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 $result = $pdo->prepare("SELECT * FROM cars 
                 WHERE location = '$fromlocation' 
                 AND fromdate BETWEEN '$fromdate' AND '$todate' 
-                AND todate BETWEEN '$fromdate' AND '$todate'");
+                -- AND todate BETWEEN '$fromdate' AND '$todate'
+                ");
 
                 $result->execute();
                 for ($i = 0; $row = $result->fetch(); $i++) {

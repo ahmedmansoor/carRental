@@ -194,7 +194,7 @@ $days = dateDiffInDays($date1, $date2);
                             </p>
                             <form action="../backend/deleteBooking.php<?php echo '?id=' . $id; ?>" method="POST">
                                 <button type="sumbit" name="btnDelete" class=" btnDeleteProfile">
-                                    <a>Delete</a>
+                                    <a>Request to Cancel</a>
                                 </button>
                             </form>
                         </div>

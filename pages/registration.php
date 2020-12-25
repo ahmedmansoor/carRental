@@ -32,7 +32,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <li class="home">
                         <a href="home.php">Home</a>
                     </li>
-                    <li class="home"><a href="home.php">Cars</a></li>
+                    <li class="home"><a href="cars.php">Cars</a></li>
                     <li class="about"><a href="about.php">About</a></li>
                     <li class="contact"><a href="contact.php">Contact</a></li>
                     <button type="button" class="btnSignIn1">
@@ -68,7 +68,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     </div>
                     <p>Already have an account?</p>
                     <div>
-                        <button class="btnSignIn2" onclick="location.href='../signin.php'">
+                        <button class="btnSignIn2" onclick="location.href='signin.php'">
                             Sign In
                         </button>
                     </div>

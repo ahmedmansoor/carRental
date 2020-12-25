@@ -33,9 +33,7 @@ if (isset($_POST['btnRegister'])) {
         $stmt->execute([
             'username' => $_POST['username'],
             'email' => $_POST['email'],
-            // 'password' => $_POST['password'],
             'password' => md5($_POST['password']),
-            // 'password' => md5($password),
 
         ]);
         echo "<script>
@@ -49,9 +47,7 @@ session_start();
 
 if (isset($_POST['btnLogin'])) {
     $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    // $username = $_POST['username'];
-    // $password = md5($_POST['password']);
+    $password = md5($_POST['password']);
     if ($username != "" && $password != "") {
         try {
             $sql = "SELECT * from users where username =:username  AND password =:password";
@@ -65,26 +61,15 @@ if (isset($_POST['btnLogin'])) {
                 $_SESSION['username']   = $row['username'];
                 $_SESSION['password'] = $row['password'];
                 $_SESSION['uid'] = $row['uid'];
-                // return 'uidrgrtgv';
-                // echo ($_SESSION['username']);
 
                 if ($_SESSION['username'] == "admin") {
                     $_SESSION['loggedinAdmin'] = true;
                     $_SESSION['uid'] = $row['uid'];
                     header("Location:../admin/home.php");
-
-                    //         echo "<script>
-                    // alert('Login Successful! Welcome back Admin.');
-                    // window.location.href='../admin/home.php';
-                    // </script>";
                 } else {
                     $_SESSION['loggedinUser'] = true;
                     $_SESSION['uid'] = $row['uid'];
                     header("Location:../user/home.php");
-                    //         echo "<script>
-                    // alert('Login Successful!');
-                    // window.location.href='../user/home.php';
-                    // </script>";
                 }
             } else {
                 echo

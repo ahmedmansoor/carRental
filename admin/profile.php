@@ -207,7 +207,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             </p>
                             <form action="../backend/deleteBooking.php<?php echo '?id=' . $bookingid; ?>" method="POST">
                                 <button type="sumbit" name="btnDelete" class=" btnDeleteProfile">
-                                    <a>Delete</a>
+                                    <a>Cancel</a>
                                 </button>
                             </form>
                         </div>

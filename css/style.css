@@ -1305,7 +1305,7 @@ label.formContact-label {
 }
 
 .btnDeleteProfile {
-  background-color: #fc6e6e;
+  background-color: #ffe0cc;
   border: 1px #fc6e6e;
   border-radius: 5px;
   font-size: medium;
@@ -1316,15 +1316,16 @@ label.formContact-label {
   margin-right: -0.5rem;
   /* margin-right: 5px; */
   margin-bottom: 0;
+  color: #ee5f5b;
 }
 
 .btnDeleteProfile a {
-  color: #fff;
   padding: 5px;
 }
 
 .btnDeleteProfile:hover {
-  background-color: #ff5e5e;
+  color: #fff;
+  background-color: #fe7768;
 }
 
 .btnDelete a {
