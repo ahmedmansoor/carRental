@@ -207,6 +207,40 @@ a:after {
   margin-top: -3rem;
 }
 
+.btnShow {
+  margin-top: -1.9rem;
+  color: #fff;
+  background-color: #4d99eb;
+  border: 1px solid #4d99eb;
+  border-radius: 5px;
+  float: left;
+  margin-right: 1rem;
+  font-size: medium;
+  width: 12em;
+  height: 35px;
+  margin-bottom: 2rem;
+  /* margin-top: -3rem; */
+}
+
+.btnShow:hover {
+  color: #fff;
+  background-color: #0056b3;
+  border: 1px solid #0056b3;
+}
+
+.btnShow :after {
+  color: #fff;
+  background-color: #0056b3;
+  border: 1px solid #0056b3;
+  border-radius: 5px;
+  float: left;
+  margin-right: 1rem;
+  font-size: medium;
+  width: 12em;
+  height: 35px;
+  margin-top: -3rem;
+}
+
 .btnSignOut a {
   color: #fff;
 }
@@ -249,6 +283,11 @@ hr {
 .hr2 {
   margin-bottom: 2rem;
   margin-right: 2rem;
+}
+
+.hr3 {
+  margin-top: 20px;
+  margin-bottom: 4rem;
 }
 
 .imgCarHome2 {
@@ -822,6 +861,7 @@ button {
   background-color: #fe7768;
   border: 2px solid #fe7768;
 }
+
 .footer {
   align-items: center;
   background-color: #242424;
@@ -833,6 +873,10 @@ button {
   bottom: 0;
   height: 100px;
   width: 100%;
+}
+
+.footerProfile {
+  margin-top: 250px;
 }
 
 footer {

@@ -102,7 +102,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
                             <select name="fromlocation" required>
-                                <option selected disabled hidden><?php echo $fromlocation ?></option>
+                                <option selected><?php echo $fromlocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -127,7 +127,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
                             <select name="tolocation" required>
-                                <option selected disabled hidden><?php echo $tolocation ?></option>
+                                <option selected><?php echo $tolocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -167,7 +167,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
                             <select name="fromlocation" required>
-                                <option selected disabled hidden>No Location Selected</option>
+                                <option value="" selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -190,7 +190,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar" required>
                             <select name="tolocation">
-                                <option selected disabled hidden>No Location Selected</option>
+                                <option value="" selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>

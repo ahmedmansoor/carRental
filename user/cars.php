@@ -101,8 +101,8 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                     </div>
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
-                            <select name="fromlocation" required="required">
-                                <option selected disabled hidden><?php echo $fromlocation ?></option>
+                            <select name="fromlocation" required>
+                                <option selected><?php echo $fromlocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -125,9 +125,9 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                         <p class="searchDetails searchDetails4">Drop off details</p>
                     </div>
                     <div class="rowSearchCar">
-                        <span class="locationDropdown locationDropdownCar" required="required">
+                        <span class="locationDropdown locationDropdownCar" required>
                             <select name="tolocation">
-                                <option selected disabled hidden><?php echo $tolocation ?></option>
+                                <option selected><?php echo $tolocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -166,8 +166,8 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                     </div>
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
-                            <select name="fromlocation" required="required">
-                                <option selected disabled hidden>No Location Selected</option>
+                            <select name="fromlocation" required>
+                                <option value="" selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -189,8 +189,8 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                     </div>
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar" required="required">
-                            <select name="tolocation">
-                                <option selected disabled hidden>No Location Selected</option>
+                            <select name="tolocation" required>
+                                <option value="" selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>

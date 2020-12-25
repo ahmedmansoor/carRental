@@ -18,25 +18,6 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
             </script>";
 }
 
-function dateDiffInDays($date1, $date2)
-{
-    // Calculating the difference in timestamps 
-    $diff = strtotime($date2) - strtotime($date1);
-
-    // 1 day = 24 hours 
-    // 24 * 60 * 60 = 86400 seconds 
-    return abs(round($diff / 86400));
-}
-
-// Start date 
-$date1 = $_SESSION['fromdate'];
-
-// End date 
-$date2 = $_SESSION['todate'];
-
-// Function call to find date difference 
-$days = dateDiffInDays($date1, $date2);
-
 ?>
 
 
@@ -86,25 +67,61 @@ $days = dateDiffInDays($date1, $date2);
             <h2>Your Bookings</h2>
         </div>
 
+        <form action="profile.php" method="POST">
+            <button name="btnShow" class="btnShow">View Booked Cars</button>
+        </form>
+
+        <hr class="hr3" />
+
         <?php
-        // include_once("../db/pdoconn.php");
+        if (isset($_POST['btnShow'])) {
+            function dateDiffInDays($date1, $date2)
+            {
+                // Calculating the difference in timestamps 
+                $diff = strtotime($date2) - strtotime($date1);
 
-        // echo $_SESSION['uid'];
-        $uid = $_SESSION['uid'];
+                // 1 day = 24 hours 
+                // 24 * 60 * 60 = 86400 seconds 
+                return abs(round($diff / 86400));
+            }
 
-        // $ID = '31';
+            // Start date 
+            $date1 = $_SESSION['fromdate'];
 
-        $result = $pdo->prepare("SELECT carid FROM bookings WHERE uid='$uid'");
-        $result->execute();
-        for ($i = 0; $row = $result->fetch(); $i++) {
-            $uid = $row['carid'];
+            // End date 
+            $date2 = $_SESSION['todate'];
 
-            $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = '$uid'");
-            $stmt->execute();
-            for ($i = 0; $row = $stmt->fetch(); $i++) {
-                $id = $row['id'];
+            // Function call to find date difference 
+            $days = dateDiffInDays($date1, $date2);
+            // include_once("../db/pdoconn.php");
 
-                $total = $days * $row['price'];
+            // echo $_SESSION['uid'];
+            $uid = $_SESSION['uid'];
+
+            $result = $pdo->prepare("SELECT * FROM bookings WHERE uid='$uid'");
+            $result->execute();
+            for ($i = 0; $row = $result->fetch(); $i++) {
+                $bookingid = $row['id'];
+                $uid = $row['carid'];
+                $fromlocation = $row['fromlocation'];
+                $tolocation = $row['tolocation'];
+
+                $fromdate = $row['fromdate'];
+                $todate = $row['todate'];
+
+                $fromtime = $row['fromtime'];
+                $totime = $row['totime'];
+
+                $days = $row['days'];
+
+                // $ID = '31';
+
+                $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = '$uid'");
+                $stmt->execute();
+                for ($i = 0; $row = $stmt->fetch(); $i++) {
+                    $id = $row['id'];
+
+                    $total = $days * $row['price'];
 
         ?>
 
@@ -194,7 +211,7 @@ $days = dateDiffInDays($date1, $date2);
                             </p>
                             <form action="../backend/deleteBooking.php<?php echo '?id=' . $id; ?>" method="POST">
                                 <button type="sumbit" name="btnDelete" class=" btnDeleteProfile">
-                                    <a>Request to Cancel</a>
+                                    <a>Cancel</a>
                                 </button>
                             </form>
                         </div>
@@ -209,13 +226,26 @@ $days = dateDiffInDays($date1, $date2);
             </div>
         </div>
         <?php
+                }
             }
+        } else {
+
+            ?>
+
+        <div class="bannerNote">
+            <p>
+                <br>
+                No booked cars found.<br> Click the View Booked Cars button to refresh.
+            </p>
+
+        </div>
+        <?php
         }
         ?>
     </main>
 </body>
 
-<footer class="footer">
+<footer class="footer footerProfile">
     <div class="footerContainer">
         <p class="footerNote">Copyright &copy; Maldives Travel Company 2020</p>
     </div>
