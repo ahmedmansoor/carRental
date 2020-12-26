@@ -102,7 +102,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
                             <select name="fromlocation" required>
-                                <option selected hidden><?php echo $fromlocation ?></option>
+                                <option selected><?php echo $fromlocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -127,7 +127,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
                             <select name="tolocation" required>
-                                <option selected hidden><?php echo $tolocation ?></option>
+                                <option selected><?php echo $tolocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
@@ -274,29 +274,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     $id = $row['id'];
 
 
-                    // echo $id;
-
-
-                    $stmt = $pdo->prepare("SELECT * FROM bookings WHERE carid = '$id'");
-                    $stmt->execute();
-                    for ($i = 0; $row = $stmt->fetch(); $i++) {
-                        $notAvailableCars = $row['carid'];
-
-                        echo $notAvailableCars;
-                    }
-
-                    // if ($id == $notAvailableCars) {
-                    //     for ($i = 0; $row = $result->fetch(); $i++) {
-                    //         $id = $row['id'];
-                    //         echo $id;
-                    // $query = $pdo->query("SELECT * FROM bookings WHERE carid = '$id'");
-                    // $count = $query->rowcount();
-                    // $row = $query->fetch();
-
-                    // if ($count > 0) {
-                    //     $_SESSION['id'] = $row['carid'];
-
-
                 ?>
 
             <div class="cardCover">
@@ -347,12 +324,61 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             </div>
             <?php
                 }
+            } else {
+                $result = $pdo->prepare("SELECT * FROM cars");
+                $result->execute();
+                for ($i = 0; $row = $result->fetch(); $i++) {
+                    $id = $row['id'];
+                ?>
+            <div class="cardCover">
+                <div class="card">
+                    <div class="imgContainer">
+                        <img class="imgCar" src="<?php echo $row['image'] ?>" />
+                    </div>
+                    <div class=" cardTextCover">
+                        <p class="location" value=><?php echo $row['location'] ?></p>
+                        <p class="carName" value=><?php echo $row['carname'] ?></p>
+                        <p class="mvr">MVR</p>
+                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
+                        <p class="perday">per day</p>
+
+                        <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
+                            <button type="sumbit" name="btnBook" class="btnBookAdmin">
+                                <a>Book now</a>
+                            </button>
+                        </form>
+
+                        <div class="editdelete">
+                            <form method="POST" action="edit.php<?php echo '?id=' . $id; ?>">
+                                <button type="sumbit" class="btnEdit" class=" btnEdit">
+                                    <a>Edit</a>
+                                </button>
+                            </form>
+
+                            <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST">
+                                <button type="sumbit" name="btnDelete" class=" btnDelete">
+                                    <a>Delete</a>
+                                </button>
+                            </form>
+                            <!-- <div class="dropdown">
+                                <button onclick="myFunction()" class="btnDelete1">Delete</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST"
+                                        class="btnDeleteConfirm">
+                                        <button>
+                                            <a>Confirm</a>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
             }
-            // } else {
-            //     echo ("car unavailable");
-            // }
-            //     }
-            // }
             ?>
         </div>
 

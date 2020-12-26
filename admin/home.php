@@ -89,12 +89,12 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     </div>
                     <div class="rowSearch">
                         <span class="locationDropdown inputSearch">
-                            <select name="fromlocation" required="required">
-                                <option selected disabled hidden>Select a Location</option>
+                            <select name="fromlocation" required>
+                                <option value="" selected disabled hidden>Select a Location</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
                                 <option>Villingili Ferry Terminal (Malé)</option>
                                 <option>Jetty Number 1 (Malé)</option>
                                 <option>Jetty Number 2 (Malé)</option>
@@ -104,13 +104,13 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                                 <option>Jetty Number 6 (Malé)</option>
                             </select>
                         </span>
-                        <span class="locationDropdown inputSearch" required="required">
+                        <span class="locationDropdown inputSearch" required>
                             <select name="tolocation">
-                                <option selected disabled hidden>Select a Location</option>
+                                <option value="" selected disabled hidden>Select a Location</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
                                 <option>Villingili Ferry Terminal (Malé)</option>
                                 <option>Jetty Number 1 (Malé)</option>
                                 <option>Jetty Number 2 (Malé)</option>

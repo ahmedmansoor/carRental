@@ -69,14 +69,12 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <form method="POST" action="../backend/upload.php" enctype="multipart/form-data">
                 <div class="formUploadGroup">
                     <label>Car Name</label>
-                    <input type="text" name="carname" class="form-control" placeholder="Enter car name"
-                        required="required" />
+                    <input type="text" name="carname" class="form-control" placeholder="Enter car name" required="required" />
                 </div>
 
                 <div class="formUploadGroup">
                     <label>Price Per Day</label>
-                    <input type="number" name="price" class="form-control" placeholder="Enter price per day"
-                        required="required" />
+                    <input type="number" name="price" class="form-control" placeholder="Enter price per day" required="required" />
                 </div>
 
                 <div class="formUploadGroup">
@@ -87,7 +85,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             <option>Velana International Airport (Hulhule)</option>
                             <option>Airport Ferry Terminal (Male)</option>
                             <option>Hulhumalé Ferry Terminal (Male)</option>
-                            <option>Hulhumale Ferry Ferminal (Hulhumale)</option>
+                            <option>Hulhumale Ferry Terminal (Hulhumale)</option>
                             <option>Villingili Ferry Terminal (Male)</option>
                             <option>Jetty Number 1 (Male)</option>
                             <option>Jetty Number 2 (Male)</option>

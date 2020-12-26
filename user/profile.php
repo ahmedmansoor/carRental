@@ -114,8 +114,6 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
 
                 $days = $row['days'];
 
-                // $ID = '31';
-
                 $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = '$uid'");
                 $stmt->execute();
                 for ($i = 0; $row = $stmt->fetch(); $i++) {
@@ -209,11 +207,11 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                                     MVR <?php echo $total ?>
                                 </span>
                             </p>
-                            <form action="../backend/deleteBooking.php<?php echo '?id=' . $id; ?>" method="POST">
+                            <!-- <form action="../backend/deleteBooking.php<?php echo '?id=' . $id; ?>" method="POST">
                                 <button type="sumbit" name="btnDelete" class=" btnDeleteProfile">
-                                    <a>Cancel</a>
+                                    <a>Re</a>
                                 </button>
-                            </form>
+                            </form> -->
                         </div>
                         <!-- <form method="POST" action="booking.php<?php echo '?id=' . $id; ?>">
                             <button name="btnPay" type="sumbit" class="btnPay">

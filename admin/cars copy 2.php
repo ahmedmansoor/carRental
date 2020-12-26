@@ -10,16 +10,16 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time();
 
-if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
+
+if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 } else {
     echo "<script>
-            alert('Please log in first to see this page.');
+            alert('Must be an Admin to view this page');
             window.location.href='../index.php';
             </script>";
 }
 
 ?>
-
 
 <html lang="en">
 
@@ -60,8 +60,11 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                 booking your car rental.
             </h2>
         </div>
+        <button type="button" class="btnUploadCar">
+            <a href="add.php">Add Car</a>
+        </button>
 
-        <div class="bannerNote">
+        <div class="bannerNoteCar">
             <p>
                 Browse all our cars online, and once you have narrowed down your
                 search and would like to book a car, simply click the 'Book now'
@@ -69,9 +72,6 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
             </p>
         </div>
 
-        <img class="imgBooking" src="../img/booking.svg" />
-
-        <!-- Search -->
         <?php
         if (isset($_POST['btnSearchCar'])) {
             $fromlocation = $_POST['fromlocation'];
@@ -123,8 +123,8 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                             <p class="searchDetails searchDetails4">Drop off details</p>
                         </div>
                         <div class="rowSearchCar">
-                            <span class="locationDropdown locationDropdownCar" required>
-                                <select name="tolocation">
+                            <span class="locationDropdown locationDropdownCar">
+                                <select name="tolocation" required>
                                     <option selected hidden><?php echo $tolocation ?></option>
                                     <option>Velana International Airport (Hulhulé)</option>
                                     <option>Airport Ferry Terminal (Malé)</option>
@@ -184,8 +184,8 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                             <p class="searchDetails searchDetails4">Drop off details</p>
                         </div>
                         <div class="rowSearchCar">
-                            <span class="locationDropdown locationDropdownCar" required="required">
-                                <select name="tolocation" required>
+                            <span class="locationDropdown locationDropdownCar" required>
+                                <select name="tolocation">
                                     <option value="" selected disabled hidden>No Location Selected</option>
                                     <option>Velana International Airport (Hulhulé)</option>
                                     <option>Airport Ferry Terminal (Malé)</option>
@@ -212,8 +212,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
 
         <?php
         }
-        // $result = $pdo->query("SELECT * FROM cars");
-        // while ($row = $stmt->fetch()) :
+
         ?>
         <img class="imgBookingAdmin" src="../img/booking.svg" />
 
@@ -270,6 +269,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                 for ($i = 0; $row = $result->fetch(); $i++) {
                     $id = $row['id'];
 
+                    echo $id;
 
                 ?>
 
@@ -290,6 +290,32 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                                         <a>Book now</a>
                                     </button>
                                 </form>
+
+                                <div class="editdelete">
+                                    <form method="POST" action="edit.php<?php echo '?id=' . $id; ?>">
+                                        <button type="sumbit" class="btnEdit" class=" btnEdit">
+                                            <a>Edit</a>
+                                        </button>
+                                    </form>
+
+                                    <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST">
+                                        <button type="sumbit" name="btnDelete" class=" btnDelete">
+                                            <a>Delete</a>
+                                        </button>
+                                    </form>
+                                    <!-- <div class="dropdown">
+                                <button onclick="myFunction()" class="btnDelete1">Delete</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST"
+                                        class="btnDeleteConfirm">
+                                        <button>
+                                            <a>Confirm</a>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> -->
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -298,7 +324,39 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
             }
             ?>
         </div>
+
+
+        <!-- <div class="dropdown">
+            <button onclick="myFunction()" class="btnDelete1">Delete</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Confirm</a>
+            </div>
+        </div> -->
+        <!-- 
+        <script>
+        /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.btnDelete1')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        </script> -->
+
     </main>
+
 </body>
 
 <footer class="footer">

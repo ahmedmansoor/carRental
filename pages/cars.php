@@ -96,11 +96,11 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
                             <select name="fromlocation" required="required">
-                                <option selected disabled hidden><?php echo $fromlocation ?></option>
+                                <option selected hidden><?php echo $fromlocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
                                 <option>Villingili Ferry Terminal (Malé)</option>
                                 <option>Jetty Number 1 (Malé)</option>
                                 <option>Jetty Number 2 (Malé)</option>
@@ -121,11 +121,11 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar" required="required">
                             <select name="tolocation">
-                                <option selected disabled hidden><?php echo $tolocation ?></option>
+                                <option selected hidden><?php echo $tolocation ?></option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
                                 <option>Villingili Ferry Terminal (Malé)</option>
                                 <option>Jetty Number 1 (Malé)</option>
                                 <option>Jetty Number 2 (Malé)</option>
@@ -160,12 +160,12 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     </div>
                     <div class="rowSearchCar">
                         <span class="locationDropdown locationDropdownCar">
-                            <select name="fromlocation" required="required">
-                                <option selected disabled hidden>No Location Selected</option>
+                            <select name="fromlocation" required>
+                                <option value="" selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
                                 <option>Villingili Ferry Terminal (Malé)</option>
                                 <option>Jetty Number 1 (Malé)</option>
                                 <option>Jetty Number 2 (Malé)</option>
@@ -182,13 +182,13 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <p class="searchDetails searchDetails4">Drop off details</p>
                     </div>
                     <div class="rowSearchCar">
-                        <span class="locationDropdown locationDropdownCar" required="required">
+                        <span class="locationDropdown locationDropdownCar" required>
                             <select name="tolocation">
-                                <option selected disabled hidden>No Location Selected</option>
+                                <option value="" selected disabled hidden>No Location Selected</option>
                                 <option>Velana International Airport (Hulhulé)</option>
                                 <option>Airport Ferry Terminal (Malé)</option>
                                 <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Ferminal (Hulhumalé)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
                                 <option>Villingili Ferry Terminal (Malé)</option>
                                 <option>Jetty Number 1 (Malé)</option>
                                 <option>Jetty Number 2 (Malé)</option>
@@ -283,7 +283,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <p class="carPrice" value=><?php echo $row['price'] ?></p>
                         <p class="perday">per day</p>
 
-                        <form action="../signin.php" method="POST">
+                        <form action="signin.php" method="POST">
                             <button type="sumbit" name="btnBook" class=" btnBookAdmin">
                                 <a>Book now</a>
                             </button>
