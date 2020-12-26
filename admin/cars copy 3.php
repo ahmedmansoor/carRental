@@ -262,46 +262,45 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
             <?php
 
-                $stmt = $pdo->prepare("SELECT carid FROM bookings 
-                WHERE fromlocation = '$fromlocation' 
+                // $result = $pdo->prepare("SELECT * FROM cars");
+                $result = $pdo->prepare("SELECT * FROM cars 
+                WHERE location = '$fromlocation' 
                 AND fromdate BETWEEN '$fromdate' AND '$todate' 
                 -- AND todate BETWEEN '$fromdate' AND '$todate'
                 ");
-                $stmt->execute();
-                // echo '<pre>';
-                // var_dump($stmt->fetchAll());
-                // echo '</pre>';
-
-                $result = $stmt->fetchAll();
-
-                $bookedId = [];
-                foreach ($result as $row) {
-                    $bookedIds[] = $row['carid'];
-                }
-
-                // echo '<pre>';
-                // var_dump($bookedIds);
-                // echo '</pre>';
-                // exit;
-
-                // $result = $pdo->prepare("SELECT * FROM cars");
-                $result = $pdo->prepare("SELECT * FROM cars 
-                WHERE id NOT IN (" . implode(',', $bookedIds) . ") AND 
-                (location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate')
-                ");
 
                 $result->execute();
-                $availableCars = [];
-                $availableCars = $result->fetchAll();
-                // echo '<pre>';
-                // var_dump($result->fetchAll());
-                // echo '</pre>';
-                // exit;
-                ?>
-            <?php
-                foreach ($availableCars as $row) { ?>
-            <div class="cardCover">
+                for ($i = 0; $row = $result->fetch(); $i++) {
+                    $id = $row['id'];
 
+
+                    // echo $id;
+
+
+                    $stmt = $pdo->prepare("SELECT * FROM bookings 
+                    WHERE carid = '$id'");
+                    $stmt->execute();
+                    for ($i = 0; $row = $stmt->fetch(); $i++) {
+                        $notAvailableCars = $row['carid'];
+
+                        echo $notAvailableCars;
+                    }
+
+                    // if ($id == $notAvailableCars) {
+                    //     for ($i = 0; $row = $result->fetch(); $i++) {
+                    //         $id = $row['id'];
+                    //         echo $id;
+                    // $query = $pdo->query("SELECT * FROM bookings WHERE carid = '$id'");
+                    // $count = $query->rowcount();
+                    // $row = $query->fetch();
+
+                    // if ($count > 0) {
+                    //     $_SESSION['id'] = $row['carid'];
+
+
+                ?>
+
+            <div class="cardCover">
                 <div class="card">
                     <div class="imgContainer">
                         <img class="imgCar" src="<?php echo $row['image'] ?>" />
