@@ -18,7 +18,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 } else {
     echo "<script>
             alert('Please log in first to see this page.');
-            window.location.href='../index.html';
+            window.location.href='../index.php';
             </script>";
 }
 

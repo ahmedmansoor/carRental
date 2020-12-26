@@ -107,9 +107,9 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         $_SESSION['days'] = $days;
 
 
-        $result = $pdo->prepare("SELECT * FROM cars where id='$ID'");
-        $result->execute();
-        for ($i = 0; $row = $result->fetch(); $i++) {
+        $stmt = $pdo->prepare("SELECT * FROM cars where id='$ID'");
+        $stmt->execute();
+        for ($i = 0; $row = $stmt->fetch(); $i++) {
             $id = $row['id'];
 
             $total = $days * $row['price'];

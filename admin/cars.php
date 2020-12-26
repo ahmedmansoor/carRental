@@ -103,17 +103,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <span class="locationDropdown locationDropdownCar">
                             <select name="fromlocation" required>
                                 <option selected hidden><?php echo $fromlocation ?></option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
                             </select>
                         </span>
                         <input class="inputSearch" type="date" name="fromdate" required="required"
@@ -128,17 +128,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <span class="locationDropdown locationDropdownCar">
                             <select name="tolocation" required>
                                 <option selected hidden><?php echo $tolocation ?></option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
                             </select>
                         </span>
 
@@ -168,17 +168,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <span class="locationDropdown locationDropdownCar">
                             <select name="fromlocation" required>
                                 <option value="" selected disabled hidden>No Location Selected</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
                             </select>
                         </span>
                         <input class="inputSearch" type="date" name="fromdate" required="required" />
@@ -191,17 +191,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                         <span class="locationDropdown locationDropdownCar" required>
                             <select name="tolocation">
                                 <option value="" selected disabled hidden>No Location Selected</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (Hulhumale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
                             </select>
                         </span>
 
@@ -274,32 +274,63 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
                 $result = $stmt->fetchAll();
 
-                $bookedId = [];
+                $bookedCarIds = [];
                 foreach ($result as $row) {
-                    $bookedIds[] = $row['carid'];
+                    $bookedCarIds[] = $row['carid'];
                 }
 
                 // echo '<pre>';
-                // var_dump($bookedIds);
+                // var_dump($bookedCarIds);
                 // echo '</pre>';
                 // exit;
 
                 // $result = $pdo->prepare("SELECT * FROM cars");
-                $result = $pdo->prepare("SELECT * FROM cars 
-                WHERE id NOT IN (" . implode(',', $bookedIds) . ") AND 
-                (location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate')
-                ");
+                try {
+                    $whereClause = [];
+                    $params = [];
+                    if (!empty($bookedCarIds)) {
+                        $whereClause[] = 'id NOT IN (?' . str_repeat(', ?', count($bookedCarIds) - 1) . ')';
+                        $params = $bookedCarIds;
+                    }
+                    if (!empty($fromlocation)) {
+                        $whereClause[] = 'location = ?';
+                        $params[] = $fromlocation;
+                    }
+                    if (!empty($fromdate) && !empty($todate)) {
+                        $whereClause[] = 'fromdate BETWEEN ? AND ?';
+                        $params[] = $fromdate;
+                        $params[] = $todate;
+                    }
+                    $whereClause = !empty($whereClause) ? 'WHERE ' . implode(' AND ', $whereClause) : '';
 
-                $result->execute();
-                $availableCars = [];
-                $availableCars = $result->fetchAll();
-                // echo '<pre>';
-                // var_dump($result->fetchAll());
-                // echo '</pre>';
-                // exit;
+                    $result = $pdo->prepare("SELECT * FROM cars $whereClause");
+                    $result->execute($params);
+                    $availableCars = $result->fetchAll();
+
+                    // OR WHERE location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate'
+                    // $result = $pdo->prepare("SELECT * FROM cars 
+                    // WHERE  id NOT IN (" . implode(',', $bookedCarIds) . ") AND 
+                    // (location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate') 
+                    // OR ) THEN location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate' 
+                    // ");
+
+                    // $result->execute();
+                    // $availableCars = [];
+                    // $availableCars = $result->fetchAll();
+                    // echo '<pre>';
+                    // var_dump($result->fetchAll());
+                    // echo '</pre>';
+                    // exit;
+
+                    $result->execute();
+                    for ($i = 0; $row = $result->fetch(); $i++) {
+                        $id = $row['id'];
+
+                        // foreach ($availableCars as $row) {
                 ?>
             <?php
-                foreach ($availableCars as $row) { ?>
+                        // foreach ($availableCars as $row) {
+                        ?>
             <div class="cardCover">
 
                 <div class="card">
@@ -348,6 +379,9 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 </div>
             </div>
             <?php
+                    }
+                } catch (PDOException $e) {
+                    echo "Error : " . $e->getMessage();
                 }
             }
             // } else {

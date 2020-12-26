@@ -98,9 +98,9 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
             // echo $_SESSION['uid'];
             $uid = $_SESSION['uid'];
 
-            $result = $pdo->prepare("SELECT * FROM bookings WHERE uid='$uid'");
-            $result->execute();
-            for ($i = 0; $row = $result->fetch(); $i++) {
+            $stmt = $pdo->prepare("SELECT * FROM bookings WHERE uid='$uid'");
+            $stmt->execute();
+            for ($i = 0; $row = $stmt->fetch(); $i++) {
                 $bookingid = $row['id'];
                 $uid = $row['carid'];
                 $fromlocation = $row['fromlocation'];

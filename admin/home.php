@@ -68,7 +68,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
             <a href="../admin/cars.php">Find a Car</a>
         </button>
         <!-- <button type="button" class="btnSignIn3">
-            <a href="../index.html">Sign In</a>
+            <a href="../index.php">Sign In</a>
         </button> -->
 
         <img class="imgCarHome1" src="../img/cars/CarHome1.png" />

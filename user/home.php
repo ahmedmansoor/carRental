@@ -70,7 +70,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
             <a href="../user/cars.php">Find a Car</a>
         </button>
         <!-- <button type="button" class="btnSignIn3">
-        <a href="../index.html">Sign In</a>
+        <a href="../index.php">Sign In</a>
       </button> -->
 
         <img class="imgCarHome1" src="../img/cars/CarHome1.png" />
