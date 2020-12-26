@@ -98,9 +98,11 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
             // echo $_SESSION['uid'];
             $uid = $_SESSION['uid'];
 
-            $stmt = $pdo->prepare("SELECT * FROM bookings WHERE uid='$uid'");
-            $stmt->execute();
-            for ($i = 0; $row = $stmt->fetch(); $i++) {
+            // $ID = '31';
+
+            $result = $pdo->prepare("SELECT * FROM bookings WHERE uid='$uid'");
+            $result->execute();
+            for ($i = 0; $row = $result->fetch(); $i++) {
                 $bookingid = $row['id'];
                 $uid = $row['carid'];
                 $fromlocation = $row['fromlocation'];
@@ -113,6 +115,7 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                 $totime = $row['totime'];
 
                 $days = $row['days'];
+
 
                 $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = '$uid'");
                 $stmt->execute();
@@ -143,17 +146,17 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                         <div class="carPrice">Pickup</div>
                         <p>Location:
                             <span class="highlight">
-                                <?php echo ($_SESSION['fromlocation']) ?>
+                                <?php echo $fromlocation ?>
                             </span>
                         </p>
                         <p>Date:
                             <span class="highlight">
-                                <?php echo ($_SESSION['fromdate']) ?>
+                                <?php echo $fromdate ?>
                             </span>
                         </p>
                         <p>Time:
                             <span class="highlight">
-                                <?php echo ($_SESSION['fromtime']) ?>
+                                <?php echo $fromtime ?>
                             </span>
                         </p>
                         <br />
@@ -164,17 +167,17 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                         <div class="carPrice">Return</div>
                         <p>Location:
                             <span class="highlight">
-                                <?php echo ($_SESSION['tolocation']) ?>
+                                <?php echo $tolocation ?>
                             </span>
                         </p>
                         <p>Date:
                             <span class="highlight">
-                                <?php echo ($_SESSION['todate']) ?>
+                                <?php echo $todate ?>
                             </span>
                         </p>
                         <p>Time:
                             <span class="highlight">
-                                <?php echo ($_SESSION['totime']) ?>
+                                <?php echo $totime ?>
                             </span>
                         </p>
                     </div>
@@ -207,11 +210,11 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                                     MVR <?php echo $total ?>
                                 </span>
                             </p>
-                            <!-- <form action="../backend/deleteBooking.php<?php echo '?id=' . $id; ?>" method="POST">
+                            <form action="../backend/deleteBooking.php<?php echo '?id=' . $bookingid; ?>" method="POST">
                                 <button type="sumbit" name="btnDelete" class=" btnDeleteProfile">
-                                    <a>Re</a>
+                                    <a>Cancel</a>
                                 </button>
-                            </form> -->
+                            </form>
                         </div>
                         <!-- <form method="POST" action="booking.php<?php echo '?id=' . $id; ?>">
                             <button name="btnPay" type="sumbit" class="btnPay">
@@ -235,9 +238,10 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                 <br>
                 No booked cars found.<br> Click the View Booked Cars button to refresh.
             </p>
-
         </div>
+
         <?php
+
         }
         ?>
     </main>

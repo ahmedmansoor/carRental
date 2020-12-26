@@ -103,17 +103,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             <span class="locationDropdown locationDropdownCar">
                                 <select name="fromlocation" required>
                                     <option selected hidden><?php echo $fromlocation ?></option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
+                                    <option>Velana International Airport (Hulhule)</option>
+                                    <option>Airport Ferry Terminal (Male)</option>
+                                    <option>HulhuMale Ferry Terminal (Male)</option>
+                                    <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                    <option>Villingili Ferry Terminal (Male)</option>
+                                    <option>Jetty Number 1 (Male)</option>
+                                    <option>Jetty Number 2 (Male)</option>
+                                    <option>Jetty Number 3 (Male)</option>
+                                    <option>Jetty Number 4 (Male)</option>
+                                    <option>Jetty Number 5 (Male)</option>
+                                    <option>Jetty Number 6 (Male)</option>
                                 </select>
                             </span>
                             <input class="inputSearch" type="date" name="fromdate" required="required" value="<?php echo $fromdate ?>" />
@@ -126,17 +126,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             <span class="locationDropdown locationDropdownCar">
                                 <select name="tolocation" required>
                                     <option selected hidden><?php echo $tolocation ?></option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
+                                    <option>Velana International Airport (Hulhule)</option>
+                                    <option>Airport Ferry Terminal (Male)</option>
+                                    <option>HulhuMale Ferry Terminal (Male)</option>
+                                    <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                    <option>Villingili Ferry Terminal (Male)</option>
+                                    <option>Jetty Number 1 (Male)</option>
+                                    <option>Jetty Number 2 (Male)</option>
+                                    <option>Jetty Number 3 (Male)</option>
+                                    <option>Jetty Number 4 (Male)</option>
+                                    <option>Jetty Number 5 (Male)</option>
+                                    <option>Jetty Number 6 (Male)</option>
                                 </select>
                             </span>
 
@@ -164,17 +164,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             <span class="locationDropdown locationDropdownCar">
                                 <select name="fromlocation" required>
                                     <option value="" selected disabled hidden>No Location Selected</option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
+                                    <option>Velana International Airport (Hulhule)</option>
+                                    <option>Airport Ferry Terminal (Male)</option>
+                                    <option>HulhuMale Ferry Terminal (Male)</option>
+                                    <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                    <option>Villingili Ferry Terminal (Male)</option>
+                                    <option>Jetty Number 1 (Male)</option>
+                                    <option>Jetty Number 2 (Male)</option>
+                                    <option>Jetty Number 3 (Male)</option>
+                                    <option>Jetty Number 4 (Male)</option>
+                                    <option>Jetty Number 5 (Male)</option>
+                                    <option>Jetty Number 6 (Male)</option>
                                 </select>
                             </span>
                             <input class="inputSearch" type="date" name="fromdate" required="required" />
@@ -187,17 +187,17 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                             <span class="locationDropdown locationDropdownCar" required>
                                 <select name="tolocation">
                                     <option value="" selected disabled hidden>No Location Selected</option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
+                                    <option>Velana International Airport (Hulhule)</option>
+                                    <option>Airport Ferry Terminal (Male)</option>
+                                    <option>HulhuMale Ferry Terminal (Male)</option>
+                                    <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                    <option>Villingili Ferry Terminal (Male)</option>
+                                    <option>Jetty Number 1 (Male)</option>
+                                    <option>Jetty Number 2 (Male)</option>
+                                    <option>Jetty Number 3 (Male)</option>
+                                    <option>Jetty Number 4 (Male)</option>
+                                    <option>Jetty Number 5 (Male)</option>
+                                    <option>Jetty Number 6 (Male)</option>
                                 </select>
                             </span>
 

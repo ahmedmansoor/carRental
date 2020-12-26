@@ -93,134 +93,138 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
             $_SESSION['totime'] = $totime;
         ?>
 
-            <div class="searchBoxCar">
-                <div class="formSearchCar">
-                    <form action="cars.php" method="POST">
-                        <div class="rowDetails">
-                            <p class="searchDetails searchDetails3">Pick-up details</p>
-                        </div>
-                        <div class="rowSearchCar">
-                            <span class="locationDropdown locationDropdownCar">
-                                <select name="fromlocation" required>
-                                    <option selected hidden><?php echo $fromlocation ?></option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
-                                </select>
-                            </span>
-                            <input class="inputSearch" type="date" name="fromdate" required="required" value="<?php echo $fromdate ?>" />
-                            <input class="inputSearch" type="time" name="fromtime" required="required" value="<?php echo $fromtime ?>" />
-                        </div>
-                        <div class="rowDetails">
-                            <p class="searchDetails searchDetails4">Drop off details</p>
-                        </div>
-                        <div class="rowSearchCar">
-                            <span class="locationDropdown locationDropdownCar" required>
-                                <select name="tolocation">
-                                    <option selected hidden><?php echo $tolocation ?></option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
-                                </select>
-                            </span>
+        <div class="searchBoxCar">
+            <div class="formSearchCar">
+                <form action="cars.php" method="POST">
+                    <div class="rowDetails">
+                        <p class="searchDetails searchDetails3">Pick-up details</p>
+                    </div>
+                    <div class="rowSearchCar">
+                        <span class="locationDropdown locationDropdownCar">
+                            <select name="fromlocation" required>
+                                <option selected hidden><?php echo $fromlocation ?></option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>HulhuMale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
+                            </select>
+                        </span>
+                        <input class="inputSearch" type="date" name="fromdate" required="required"
+                            value="<?php echo $fromdate ?>" />
+                        <input class="inputSearch" type="time" name="fromtime" required="required"
+                            value="<?php echo $fromtime ?>" />
+                    </div>
+                    <div class="rowDetails">
+                        <p class="searchDetails searchDetails4">Drop off details</p>
+                    </div>
+                    <div class="rowSearchCar">
+                        <span class="locationDropdown locationDropdownCar" required>
+                            <select name="tolocation">
+                                <option selected hidden><?php echo $tolocation ?></option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>HulhuMale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
+                            </select>
+                        </span>
 
-                            <input class="inputSearch" type="date" name="todate" required="required" value="<?php echo $todate ?>" />
-                            <input class="inputSearch" type="time" name="totime" required="required" value="<?php echo $totime ?>" />
+                        <input class="inputSearch" type="date" name="todate" required="required"
+                            value="<?php echo $todate ?>" />
+                        <input class="inputSearch" type="time" name="totime" required="required"
+                            value="<?php echo $totime ?>" />
 
-                        </div>
-                        <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
-                    </form>
-                </div>
+                    </div>
+                    <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
+                </form>
             </div>
+        </div>
 
         <?php
         } else {
 
         ?>
 
-            <div class="searchBoxCar">
-                <div class="formSearchCar">
-                    <form action="cars.php" method="POST">
-                        <div class="rowDetails">
-                            <p class="searchDetails searchDetails3">Pick-up details</p>
-                        </div>
-                        <div class="rowSearchCar">
-                            <span class="locationDropdown locationDropdownCar">
-                                <select name="fromlocation" required>
-                                    <option value="" selected disabled hidden>No Location Selected</option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
-                                </select>
-                            </span>
-                            <input class="inputSearch" type="date" name="fromdate" required="required" />
-                            <input class="inputSearch" type="time" name="fromtime" required="required" />
-                        </div>
-                        <div class="rowDetails">
-                            <p class="searchDetails searchDetails4">Drop off details</p>
-                        </div>
-                        <div class="rowSearchCar">
-                            <span class="locationDropdown locationDropdownCar" required="required">
-                                <select name="tolocation" required>
-                                    <option value="" selected disabled hidden>No Location Selected</option>
-                                    <option>Velana International Airport (Hulhulé)</option>
-                                    <option>Airport Ferry Terminal (Malé)</option>
-                                    <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                    <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                    <option>Villingili Ferry Terminal (Malé)</option>
-                                    <option>Jetty Number 1 (Malé)</option>
-                                    <option>Jetty Number 2 (Malé)</option>
-                                    <option>Jetty Number 3 (Malé)</option>
-                                    <option>Jetty Number 4 (Malé)</option>
-                                    <option>Jetty Number 5 (Malé)</option>
-                                    <option>Jetty Number 6 (Malé)</option>
-                                </select>
-                            </span>
+        <div class="searchBoxCar">
+            <div class="formSearchCar">
+                <form action="cars.php" method="POST">
+                    <div class="rowDetails">
+                        <p class="searchDetails searchDetails3">Pick-up details</p>
+                    </div>
+                    <div class="rowSearchCar">
+                        <span class="locationDropdown locationDropdownCar">
+                            <select name="fromlocation" required>
+                                <option value="" selected disabled hidden>No Location Selected</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>HulhuMale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
+                            </select>
+                        </span>
+                        <input class="inputSearch" type="date" name="fromdate" required="required" />
+                        <input class="inputSearch" type="time" name="fromtime" required="required" />
+                    </div>
+                    <div class="rowDetails">
+                        <p class="searchDetails searchDetails4">Drop off details</p>
+                    </div>
+                    <div class="rowSearchCar">
+                        <span class="locationDropdown locationDropdownCar" required="required">
+                            <select name="tolocation" required>
+                                <option value="" selected disabled hidden>No Location Selected</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>HulhuMale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
+                            </select>
+                        </span>
 
-                            <input class="inputSearch" type="date" name="todate" required="required" />
-                            <input class="inputSearch" type="time" name="totime" required="required" />
+                        <input class="inputSearch" type="date" name="todate" required="required" />
+                        <input class="inputSearch" type="time" name="totime" required="required" />
 
-                        </div>
-                        <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
-                    </form>
-                </div>
+                    </div>
+                    <button type="submit" name="btnSearchCar" class=" btnSearchCar">Search</button>
+                </form>
             </div>
+        </div>
 
         <?php
         }
-        // $result = $pdo->query("SELECT * FROM cars");
-        // while ($row = $stmt->fetch()) :
         ?>
+        <img class="imgBookingAdmin" src="../img/booking.svg" />
+
+
         <img class="imgBookingAdmin" src="../img/booking.svg" />
 
 
         <div class="row">
             <?php
-            // $fromlocation = $fromdate = $tolocation = $todate = '';
 
             if (isset($_POST['btnSearchCar'])) {
                 $fromlocation = $_POST['fromlocation'];
@@ -246,54 +250,84 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
 
             ?>
 
-                <div class="searchResultsCover">
-                    <p class="searchResults">
-                        Showing available cars for location <span class="resultsTxt">"<?php echo $fromlocation ?>"</span>
-                        from <span class="resultsTxt"> <?php echo $fromdatefomat ?> </span>
-                        to <span class="resultsTxt"><?php echo $todatefomat ?> </span>
-                        <br><br>
-                    </p>
-                </div>
+            <div class="searchResultsCover">
+                <p class="searchResults">
+                    Showing available cars for location <span class="resultsTxt">"<?php echo $fromlocation ?>"</span>
+                    from <span class="resultsTxt"> <?php echo $fromdatefomat ?> </span>
+                    to <span class="resultsTxt"><?php echo $todatefomat ?> </span>
+                    <br><br>
+                </p>
+            </div>
 
-                <hr class="hr2" />
+            <hr class="hr2" />
 
-                <?php
+            <?php
 
-                // $result = $pdo->prepare("SELECT * FROM cars");
-                $result = $pdo->prepare("SELECT * FROM cars 
-                WHERE location = '$fromlocation' 
+                $stmt = $pdo->prepare("SELECT carid FROM bookings 
+                WHERE fromlocation = '$fromlocation' 
                 AND fromdate BETWEEN '$fromdate' AND '$todate' 
-                -- AND todate BETWEEN '$fromdate' AND '$todate'
                 ");
 
-                $result->execute();
-                for ($i = 0; $row = $result->fetch(); $i++) {
-                    $id = $row['id'];
+                $stmt->execute();
 
+                $result = $stmt->fetchAll();
 
+                $bookedCarIds = [];
+                foreach ($result as $row) {
+                    $bookedCarIds[] = $row['carid'];
+                }
+
+                try {
+                    $available = [];
+                    $params = [];
+                    if (!empty($bookedCarIds)) {
+                        $available[] = 'id NOT IN (?' . str_repeat(', ?', count($bookedCarIds) - 1) . ')';
+                        $params = $bookedCarIds;
+                    }
+                    if (!empty($fromlocation)) {
+                        $available[] = 'location = ?';
+                        $params[] = $fromlocation;
+                    }
+                    if (!empty($fromdate) && !empty($todate)) {
+                        $available[] = 'fromdate BETWEEN ? AND ?';
+                        $params[] = $fromdate;
+                        $params[] = $todate;
+                    }
+                    $available = !empty($available) ? 'WHERE ' . implode(' AND ', $available) : '';
+
+                    $result = $pdo->prepare("SELECT * FROM cars $available");
+                    $result->execute($params);
+                    $availableCars = $result->fetchAll();
+
+                    $result->execute();
+                    for ($i = 0; $row = $result->fetch(); $i++) {
+                        $id = $row['id'];
                 ?>
+            <div class="cardCover">
 
-                    <div class="cardCover">
-                        <div class="card">
-                            <div class="imgContainer">
-                                <img class="imgCar" src="<?php echo $row['image'] ?>" />
-                            </div>
-                            <div class=" cardTextCover">
-                                <p class="location" value=><?php echo $row['location'] ?></p>
-                                <p class="carName" value=><?php echo $row['carname'] ?></p>
-                                <p class="mvr">MVR</p>
-                                <p class="carPrice" value=><?php echo $row['price'] ?></p>
-                                <p class="perday">per day</p>
-
-                                <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
-                                    <button type="sumbit" name="btnBook" class=" btnBookAdmin">
-                                        <a>Book now</a>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                <div class="card">
+                    <div class="imgContainer">
+                        <img class="imgCar" src="<?php echo $row['image'] ?>" />
                     </div>
+                    <div class=" cardTextCover">
+                        <p class="location" value=><?php echo $row['location'] ?></p>
+                        <p class="carName" value=><?php echo $row['carname'] ?></p>
+                        <p class="mvr">MVR</p>
+                        <p class="carPrice" value=><?php echo $row['price'] ?></p>
+                        <p class="perday">per day</p>
+
+                        <form action="checkout.php<?php echo '?id=' . $id; ?>" method="POST">
+                            <button type="sumbit" name="btnBook" class=" btnBookAdmin">
+                                <a>Book now</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <?php
+                    }
+                } catch (PDOException $e) {
+                    echo "Error : " . $e->getMessage();
                 }
             }
             ?>

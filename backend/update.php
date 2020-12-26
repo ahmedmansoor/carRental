@@ -24,19 +24,29 @@ if (isset($_POST["btnUpload"])) {
 }
 
 if ($_FILES["image"]["size"] > 1000000) {
-    echo "<pre> Sorry, your file is too large.";
+    echo "<script>
+            alert('Sorry, your file is too large..');
+             window.location.href='../admin/cars.php';
+            </script>";
+
     $uploadOk = 0;
 }
 
 if (
     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 ) {
-    echo "Sorry, only JPG, JPEG & PNG files are allowed.";
+    echo "<script>
+            alert('Sorry, only JPG, JPEG & PNG files are allowed.');
+             window.location.href='../admin/cars.php';
+            </script>";
     $uploadOk = 0;
 }
 
 if ($uploadOk == 0) {
-    echo " <pre> Your file was not uploaded.";
+    echo "<script>
+            alert('Sorry, car was not uploaded.');
+             window.location.href='../admin/cars.php';
+            </script>";
 } else {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 

@@ -93,33 +93,33 @@ if (isset($_SESSION['loggedinUser']) && $_SESSION['loggedinUser'] == true) {
                         <span class="locationDropdown inputSearch">
                             <select name="fromlocation" required>
                                 <option value="" selected disabled hidden>Select a Location</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>HulhuMale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
                             </select>
                         </span>
                         <span class="locationDropdown inputSearch" required>
                             <select name="tolocation">
                                 <option value="" selected disabled hidden>Select a Location</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
+                                <option>Velana International Airport (Hulhule)</option>
+                                <option>Airport Ferry Terminal (Male)</option>
+                                <option>HulhuMale Ferry Terminal (Male)</option>
+                                <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                                <option>Villingili Ferry Terminal (Male)</option>
+                                <option>Jetty Number 1 (Male)</option>
+                                <option>Jetty Number 2 (Male)</option>
+                                <option>Jetty Number 3 (Male)</option>
+                                <option>Jetty Number 4 (Male)</option>
+                                <option>Jetty Number 5 (Male)</option>
+                                <option>Jetty Number 6 (Male)</option>
                             </select>
                         </span>
                     </div>

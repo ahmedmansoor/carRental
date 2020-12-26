@@ -75,60 +75,60 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
         </div>
 
         <!-- Search -->
-        <div class="searchBox">
-            <div class="formSearch">
-                <form action="../user/cars.php" method="POST">
-                    <div class="rowDetails">
-                        <p class="searchDetails searchDetails1">Pick-up details</p>
-                        <p class="searchDetails searchDetails2">Drop off details</p>
-                    </div>
-                    <div class="rowSearch">
-                        <span class="locationDropdown inputSearch">
-                            <select name="fromlocation" required>
-                                <option value="" selected disabled hidden>Select a Location</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
-                            </select>
-                        </span>
-                        <span class="locationDropdown inputSearch" required>
-                            <select name="tolocation">
-                                <option value="" selected disabled hidden>Select a Location</option>
-                                <option>Velana International Airport (Hulhulé)</option>
-                                <option>Airport Ferry Terminal (Malé)</option>
-                                <option>Hulhumalé Ferry Terminal (Malé)</option>
-                                <option>Hulhumale Ferry Terminal (Hulhumalé)</option>
-                                <option>Villingili Ferry Terminal (Malé)</option>
-                                <option>Jetty Number 1 (Malé)</option>
-                                <option>Jetty Number 2 (Malé)</option>
-                                <option>Jetty Number 3 (Malé)</option>
-                                <option>Jetty Number 4 (Malé)</option>
-                                <option>Jetty Number 5 (Malé)</option>
-                                <option>Jetty Number 6 (Malé)</option>
-                            </select>
-                        </span>
-                    </div>
-                    <div class="rowSearch">
-                        <input class="inputSearch" type="date" name="fromdate" required="required" />
-                        <input class="inputSearch" type="date" name="todate" required="required" />
+        div class="searchBox">
+        <div class="formSearch">
+            <form action="../pages/cars.php" method="POST">
+                <div class="rowDetails">
+                    <p class="searchDetails searchDetails1">Pick-up details</p>
+                    <p class="searchDetails searchDetails2">Drop off details</p>
+                </div>
+                <div class="rowSearch">
+                    <span class="locationDropdown inputSearch">
+                        <select name="fromlocation" required>
+                            <option value="" selected disabled hidden>Select a Location</option>
+                            <option>Velana International Airport (Hulhule)</option>
+                            <option>Airport Ferry Terminal (Male)</option>
+                            <option>HulhuMale Ferry Terminal (Male)</option>
+                            <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                            <option>Villingili Ferry Terminal (Male)</option>
+                            <option>Jetty Number 1 (Male)</option>
+                            <option>Jetty Number 2 (Male)</option>
+                            <option>Jetty Number 3 (Male)</option>
+                            <option>Jetty Number 4 (Male)</option>
+                            <option>Jetty Number 5 (Male)</option>
+                            <option>Jetty Number 6 (Male)</option>
+                        </select>
+                    </span>
+                    <span class="locationDropdown inputSearch" required>
+                        <select name="tolocation">
+                            <option value="" selected disabled hidden>Select a Location</option>
+                            <option>Velana International Airport (Hulhule)</option>
+                            <option>Airport Ferry Terminal (Male)</option>
+                            <option>HulhuMale Ferry Terminal (Male)</option>
+                            <option>Hulhumale Ferry Terminal (HulhuMale)</option>
+                            <option>Villingili Ferry Terminal (Male)</option>
+                            <option>Jetty Number 1 (Male)</option>
+                            <option>Jetty Number 2 (Male)</option>
+                            <option>Jetty Number 3 (Male)</option>
+                            <option>Jetty Number 4 (Male)</option>
+                            <option>Jetty Number 5 (Male)</option>
+                            <option>Jetty Number 6 (Male)</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="rowSearch">
+                    <input class="inputSearch" type="date" name="fromdate" required="required" />
+                    <input class="inputSearch" type="date" name="todate" required="required" />
 
-                    </div>
-                    <div class="rowSearch">
-                        <input class="inputSearch" type="time" name="fromtime" required="required" />
-                        <input class="inputSearch" type="time" name="totime" required="required" />
+                </div>
+                <div class="rowSearch">
+                    <input class="inputSearch" type="time" name="fromtime" required="required" />
+                    <input class="inputSearch" type="time" name="totime" required="required" />
 
-                    </div>
-                    <button type="submit" name="btnSearchCar" class="btnSearch">Search</button>
-                </form>
-            </div>
+                </div>
+                <button type="submit" name="btnSearchCar" class="btnSearch">Search</button>
+            </form>
+        </div>
         </div>
 
         <!-- Steps -->

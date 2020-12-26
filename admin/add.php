@@ -40,7 +40,7 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <li class="home">
                         <a href="home.php">Home</a>
                     </li>
-                    <li class="home"><a href="cars.php">Cars</a></li>
+                    <li class="home"><a href="cars.php" class="active">Cars</a></li>
                     <li class="about"><a href="about.php">About</a></li>
                     <li class="contact">
                         <a href="contact.php">Contact</a>
@@ -81,10 +81,10 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     <label>Locations</label><br /><br />
                     <span class="locationDropdown locationDropdownAdmin">
                         <select name="location">
-                            <option>No Location Selected</option>
+                            <option value="" selected disabled hidden>No Location Selected</option>
                             <option>Velana International Airport (Hulhule)</option>
                             <option>Airport Ferry Terminal (Male)</option>
-                            <option>Hulhumalé Ferry Terminal (Male)</option>
+                            <option>HulhuMale Ferry Terminal (Male)</option>
                             <option>Hulhumale Ferry Terminal (Hulhumale)</option>
                             <option>Villingili Ferry Terminal (Male)</option>
                             <option>Jetty Number 1 (Male)</option>

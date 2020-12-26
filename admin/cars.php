@@ -223,7 +223,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
 
         <div class="row">
             <?php
-            // $fromlocation = $fromdate = $tolocation = $todate = '';
 
             if (isset($_POST['btnSearchCar'])) {
                 $fromlocation = $_POST['fromlocation'];
@@ -265,12 +264,9 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 $stmt = $pdo->prepare("SELECT carid FROM bookings 
                 WHERE fromlocation = '$fromlocation' 
                 AND fromdate BETWEEN '$fromdate' AND '$todate' 
-                -- AND todate BETWEEN '$fromdate' AND '$todate'
+
                 ");
                 $stmt->execute();
-                // echo '<pre>';
-                // var_dump($stmt->fetchAll());
-                // echo '</pre>';
 
                 $result = $stmt->fetchAll();
 
@@ -279,58 +275,34 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     $bookedCarIds[] = $row['carid'];
                 }
 
-                // echo '<pre>';
-                // var_dump($bookedCarIds);
-                // echo '</pre>';
-                // exit;
-
-                // $result = $pdo->prepare("SELECT * FROM cars");
                 try {
-                    $whereClause = [];
+                    $available = [];
                     $params = [];
                     if (!empty($bookedCarIds)) {
-                        $whereClause[] = 'id NOT IN (?' . str_repeat(', ?', count($bookedCarIds) - 1) . ')';
+                        $available[] = 'id NOT IN (?' . str_repeat(', ?', count($bookedCarIds) - 1) . ')';
                         $params = $bookedCarIds;
                     }
                     if (!empty($fromlocation)) {
-                        $whereClause[] = 'location = ?';
+                        $available[] = 'location = ?';
                         $params[] = $fromlocation;
                     }
                     if (!empty($fromdate) && !empty($todate)) {
-                        $whereClause[] = 'fromdate BETWEEN ? AND ?';
+                        $available[] = 'fromdate BETWEEN ? AND ?';
                         $params[] = $fromdate;
                         $params[] = $todate;
                     }
-                    $whereClause = !empty($whereClause) ? 'WHERE ' . implode(' AND ', $whereClause) : '';
+                    $available = !empty($available) ? 'WHERE ' . implode(' AND ', $available) : '';
 
-                    $result = $pdo->prepare("SELECT * FROM cars $whereClause");
+                    $result = $pdo->prepare("SELECT * FROM cars $available");
                     $result->execute($params);
                     $availableCars = $result->fetchAll();
-
-                    // OR WHERE location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate'
-                    // $result = $pdo->prepare("SELECT * FROM cars 
-                    // WHERE  id NOT IN (" . implode(',', $bookedCarIds) . ") AND 
-                    // (location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate') 
-                    // OR ) THEN location = '$fromlocation'  AND fromdate BETWEEN '$fromdate' AND '$todate' 
-                    // ");
-
-                    // $result->execute();
-                    // $availableCars = [];
-                    // $availableCars = $result->fetchAll();
-                    // echo '<pre>';
-                    // var_dump($result->fetchAll());
-                    // echo '</pre>';
-                    // exit;
 
                     $result->execute();
                     for ($i = 0; $row = $result->fetch(); $i++) {
                         $id = $row['id'];
 
-                        // foreach ($availableCars as $row) {
                 ?>
-            <?php
-                        // foreach ($availableCars as $row) {
-                        ?>
+
             <div class="cardCover">
 
                 <div class="card">
@@ -362,17 +334,6 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                                     <a>Delete</a>
                                 </button>
                             </form>
-                            <!-- <div class="dropdown">
-                                <button onclick="myFunction()" class="btnDelete1">Delete</button>
-                                <div id="myDropdown" class="dropdown-content">
-                                    <form action="../backend/delete.php<?php echo '?id=' . $id; ?>" method="POST"
-                                        class="btnDeleteConfirm">
-                                        <button>
-                                            <a>Confirm</a>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div> -->
                         </div>
 
                     </div>
@@ -384,44 +345,8 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                     echo "Error : " . $e->getMessage();
                 }
             }
-            // } else {
-            //     echo ("car unavailable");
-            // }
-            //     }
-            // }
             ?>
         </div>
-
-
-        <!-- <div class="dropdown">
-            <button onclick="myFunction()" class="btnDelete1">Delete</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#home">Confirm</a>
-            </div>
-        </div> -->
-        <!-- 
-        <script>
-        /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.btnDelete1')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-        </script> -->
-
     </main>
 
 </body>
