@@ -276,24 +276,24 @@ if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] == true) {
                 }
 
                 try {
-                    $whereClause = [];
+                    $available = [];
                     $params = [];
                     if (!empty($bookedCarIds)) {
-                        $whereClause[] = 'id NOT IN (?' . str_repeat(', ?', count($bookedCarIds) - 1) . ')';
+                        $available[] = 'id NOT IN (?' . str_repeat(', ?', count($bookedCarIds) - 1) . ')';
                         $params = $bookedCarIds;
                     }
                     if (!empty($fromlocation)) {
-                        $whereClause[] = 'location = ?';
+                        $available[] = 'location = ?';
                         $params[] = $fromlocation;
                     }
                     if (!empty($fromdate) && !empty($todate)) {
-                        $whereClause[] = 'fromdate BETWEEN ? AND ?';
+                        $available[] = 'fromdate BETWEEN ? AND ?';
                         $params[] = $fromdate;
                         $params[] = $todate;
                     }
-                    $whereClause = !empty($whereClause) ? 'WHERE ' . implode(' AND ', $whereClause) : '';
+                    $available = !empty($available) ? 'WHERE ' . implode(' AND ', $available) : '';
 
-                    $result = $pdo->prepare("SELECT * FROM cars $whereClause");
+                    $result = $pdo->prepare("SELECT * FROM cars $available");
                     $result->execute($params);
                     $availableCars = $result->fetchAll();
 

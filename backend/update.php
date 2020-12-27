@@ -37,7 +37,7 @@ if (
 ) {
     echo "<script>
             alert('Sorry, only JPG, JPEG & PNG files are allowed.');
-             window.location.href='../admin/cars.php';
+            //  window.location.href='../admin/cars.php';
             </script>";
     $uploadOk = 0;
 }

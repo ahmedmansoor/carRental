@@ -1,0 +1,91 @@
+body {
+    height: 100%;
+    margin: 0;
+    font-family:'Roboto', Arial, Helvetica, sans-serif
+}
+
+.bg {
+    background-image: url("photos/MainMenu.png");
+
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#banner{
+    height: 85px;
+    background-color: #232323;
+}
+
+#brainWorks{
+    position: relative;
+    float: left;
+    color: #E9E9E9;
+    font-size: 40px;
+    font-weight: bold;
+    top:30%;
+    left: 1.5%;
+}
+
+#about{
+    position: relative;
+    float: right;
+    color: #E9E9E9;
+    font-size: 22px;
+    top:45%;
+    right: 3%;
+}
+#port{
+    position: relative;
+    float: right;
+    color: #E9E9E9;
+    font-size: 22px;
+    top:45%;
+    right: 6%;
+}
+
+a { text-decoration: none; color:#E9E9E9; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+#content{
+    position: relative;
+    float: left;
+    color: #E9E9E9;
+    left: 40%;
+    top: 5%;
+}
+
+#hi{
+    font-size: 30px;
+}
+#iam{
+    font-size: 50px;
+    font-weight: bold;
+}
+#dev{
+    font-size: 30px;
+}
+#in{
+    position: relative;
+    float: left;
+    top: 10px;
+    width: 32px;
+}
+#at{
+    position: relative;
+    float: left;
+    left: 13px;
+    top: 10px;
+    width: 32px;
+}
+#git{
+    position: relative;
+    float: left;
+    left: 26px;
+    top: 10px;
+    width: 32px;
+}
